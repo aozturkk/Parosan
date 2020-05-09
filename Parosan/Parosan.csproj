@@ -97,19 +97,7 @@
     <Resource Include="img\icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="img\icon2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="icon2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="img\user.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="user.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\accounts.png" />
