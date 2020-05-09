@@ -1,0 +1,67 @@
+﻿<Window x:Class="Parosan.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Parosan"
+        mc:Ignorable="d"
+        Title="Parosan" Height="600" Width="970"  Icon="icon.png" ResizeMode="NoResize">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="242"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Border Background="#134199" Grid.Column="0" Grid.Row="0">
+            <StackPanel  HorizontalAlignment="Center">
+                <Image HorizontalAlignment="Left" Height="115" VerticalAlignment="Top" Width="122" Source="user.png"></Image>
+                <Label Content="Ali Öztürk" VerticalAlignment="Bottom" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" Foreground="#FF272222" FontWeight="Bold"></Label>
+            </StackPanel>
+            
+             </Border>
+        
+        <Border Background="#134199" Grid.Column="1" Grid.Row="0"></Border>
+        <Border Background="#134199" Grid.Column="0" Grid.Row="1" Height="421" VerticalAlignment="Bottom">
+            <StackPanel>
+                <Button Height="80" Style="{DynamicResource menu}">
+                    <DockPanel Width="200">
+                        <Image Source="img/accounts.png" Width="50">   </Image>
+                        <Label Content="Hesaplar" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
+                    </DockPanel>
+                </Button>
+                
+                <Button Height="80" Style="{DynamicResource menu}" >
+                    <DockPanel Width="200">
+                        <Image Source="img/add_account.png" Width="50" Height="40"></Image>
+                        <Label Content="Hesap Ekle" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
+                    </DockPanel>
+                </Button>
+
+                <Button Height="80" Style="{DynamicResource menu}">
+                    <DockPanel Width="200"  >
+                        <Image Source="img/edit_account.png" Width="50" Height="40"></Image>
+                        <Label Content="Hesap Düzenle" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
+                    </DockPanel>
+                </Button>
+
+                <Button Height="80" Style="{DynamicResource menu}" >
+                    <DockPanel Width="200">
+                        <Image Source="img/delete_account.png" Width="50" Height="40"></Image>
+                        <Label Content=" Hesap Sil" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
+                    </DockPanel>
+                </Button>
+
+
+
+            </StackPanel>
+            
+        </Border>
+       
+       
+    </Grid>
+</Window>
