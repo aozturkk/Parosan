@@ -56,6 +56,12 @@
                     </DockPanel>
                 </Button>
 
+                <Button Height="80" Style="{DynamicResource menu}" >
+                    <DockPanel Width="200">
+                        <Image Source="img/exit.png" Width="50" Height="30"></Image>
+                        <Label Content=" Çıkış" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
+                    </DockPanel>
+                </Button>
 
 
             </StackPanel>
