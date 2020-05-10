@@ -5,69 +5,115 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parosan"
         mc:Ignorable="d"
-        Title="Parosan" Height="600" Width="970"  Icon="icon.png" ResizeMode="NoResize">
+        Title="Parosan" Height="603" Width="970"  ResizeMode="CanMinimize" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="150"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="242"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition/>
+
         </Grid.ColumnDefinitions>
 
-        <Border Background="#134199" Grid.Column="0" Grid.Row="0">
+
+
+        <!-- Top Menu !-->
+
+        <Border Grid.Column="0" Grid.Row="0" >
+            <Image Source="img/menu_background.jpg" Stretch="Fill" ></Image>
+        </Border>
+        <Border Grid.Column="1" Grid.Row="0" >
+            <Image Source="img/menu_background.jpg" Stretch="Fill" ></Image>
+        </Border>
+
+           <!--Title and Icon-->
+        <Border Grid.Column="0" Grid.Row="0">
+
+            <DockPanel Width="80" HorizontalAlignment="Left">
+                <Image Source="img/icon.png"/>
+                <Label Content="Parosan" Foreground="White"/>
+            </DockPanel>
+        </Border>
+
+        <!--exit and minimize button-->
+        <Border Grid.Column="1" Grid.Row="0">
+
+            <DockPanel Width="60" HorizontalAlignment="Right">
+                <Button Width="30" Content="__" Foreground="White" Background="{x:Null}"></Button>
+                <Button Width="30" Content="X" Foreground="White" Background="{x:Null}"/>
+            </DockPanel>
+        </Border>
+
+
+
+        <!-- Left Menu !-->
+
+        <Border Grid.Column="0" Grid.Row="1">
+            <Image Source="img/menu_background.jpg" Stretch="Fill" ></Image>
+        </Border>
+
+        <Border  Grid.Column="0" Grid.Row="1"  Margin="0,20,0,0">
             <StackPanel  HorizontalAlignment="Center">
-                <Image HorizontalAlignment="Left" Height="115" VerticalAlignment="Top" Width="122" Source="user.png"></Image>
-                <Label Content="Ali Öztürk" VerticalAlignment="Bottom" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" Foreground="#FF272222" FontWeight="Bold"></Label>
+                <Image HorizontalAlignment="Center" Height="93" VerticalAlignment="Top" Width="90" Source="img/user.png"></Image>
+                <Label Content="********" VerticalAlignment="Bottom" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" Foreground="#FF272222" FontWeight="Bold" Margin="0,15,0,0"></Label>
             </StackPanel>
-            
-             </Border>
-        
-        <Border Background="#134199" Grid.Column="1" Grid.Row="0"></Border>
-        <Border Background="#134199" Grid.Column="0" Grid.Row="1" Height="421" VerticalAlignment="Bottom">
-            <StackPanel>
-                <Button Height="80" Style="{DynamicResource menu}">
+
+        </Border>
+
+        <Border Grid.Column="0" Grid.Row="1"  Height="357" VerticalAlignment="Bottom" >
+            <StackPanel Margin="0,0,0,0" >
+
+                <Button Height="50" Style="{DynamicResource menu}">
                     <DockPanel Width="200">
-                        <Image Source="img/accounts.png" Width="50">   </Image>
-                        <Label Content="Hesaplar" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
-                    </DockPanel>
-                </Button>
-                
-                <Button Height="80" Style="{DynamicResource menu}" >
-                    <DockPanel Width="200">
-                        <Image Source="img/add_account.png" Width="50" Height="40"></Image>
-                        <Label Content="Hesap Ekle" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
+                        <Image Source="img/passwords.png" Height="40" Width="50"></Image>
+                        <Label Content="Passwords" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
                     </DockPanel>
                 </Button>
 
-                <Button Height="80" Style="{DynamicResource menu}">
+              
+
+                <Button Height="50" Style="{DynamicResource menu}">
                     <DockPanel Width="200"  >
-                        <Image Source="img/edit_account.png" Width="50" Height="40"></Image>
-                        <Label Content="Hesap Düzenle" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
+                        <Image Source="img/payments.png" Width="50" Height="40"></Image>
+                        <Label Content="Payments" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
                     </DockPanel>
                 </Button>
-
-                <Button Height="80" Style="{DynamicResource menu}" >
+                <Button Height="50" Style="{DynamicResource menu}" >
                     <DockPanel Width="200">
-                        <Image Source="img/delete_account.png" Width="50" Height="40"></Image>
-                        <Label Content=" Hesap Sil" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
+                        <Image Source="img/persons.png" Width="50" Height="40"></Image>
+                        <Label Content="Persons" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
                     </DockPanel>
                 </Button>
 
-                <Button Height="80" Style="{DynamicResource menu}" >
+                <Button Height="50" Style="{DynamicResource menu}" >
+                    <DockPanel Width="200">
+                        <Image Source="img/documents.png" Width="50" Height="40"></Image>
+                        <Label Content="Documents" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
+                    </DockPanel>
+                </Button>
+                <Button Height="50" Style="{DynamicResource menu}" >
+                    <DockPanel Width="200">
+                        <Image Source="img/notes.png" Width="50" Height="40"></Image>
+                        <Label Content="Notes" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
+                    </DockPanel>
+                </Button>
+
+                <Button Height="50" Style="{DynamicResource menu}" >
                     <DockPanel Width="200">
                         <Image Source="img/exit.png" Width="50" Height="30"></Image>
-                        <Label Content=" Çıkış" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
+                        <Label Content="Exit" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
                     </DockPanel>
                 </Button>
 
 
             </StackPanel>
-            
+
         </Border>
-       
-       
+
+
     </Grid>
 </Window>

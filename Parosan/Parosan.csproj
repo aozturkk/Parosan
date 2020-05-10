@@ -94,9 +94,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\icon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="img\user.png" />
   </ItemGroup>
   <ItemGroup>
@@ -110,7 +107,28 @@
     <Resource Include="img\edit_account.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="img\menu_background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\passwords.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\payments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\persons.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\documents.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\notes.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="img\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
