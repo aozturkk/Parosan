@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parosan"
         mc:Ignorable="d"
-        Title="Parosan" Height="603" Width="970"  ResizeMode="CanMinimize" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
+        Title="Parosan" Height="603" Width="970" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -40,11 +40,11 @@
         </Border>
 
         <!--exit and minimize button-->
-        <Border Grid.Column="1" Grid.Row="0">
+        <Border Grid.Column="1" Grid.Row="0" >
 
             <DockPanel Width="60" HorizontalAlignment="Right">
-                <Button Width="30" Content="__" Foreground="White" Background="{x:Null}"></Button>
-                <Button Width="30" Content="X" Foreground="White" Background="{x:Null}"/>
+                <Button Width="30" Content="__" Foreground="White" x:Name="minimizeButton" Click="minimize" Background="{x:Null}"></Button>
+                <Button Width="30" Content="X" Foreground="White" x:Name="exitButtonHeader" Click="exit" Background="{x:Null}"/>
             </DockPanel>
         </Border>
 

@@ -110,7 +110,7 @@
     <Resource Include="img\menu_background.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\passwords.png" />
+    <Resource Include="img\icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\payments.png" />
@@ -128,7 +128,7 @@
     <Resource Include="img\exit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\icon.png" />
+    <Resource Include="img\passwords.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

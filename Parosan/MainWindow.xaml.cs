@@ -24,5 +24,15 @@ namespace Parosan
         {
             InitializeComponent();
         }
+
+        private void exit(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
+
+        private void minimize(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
     }
 }
