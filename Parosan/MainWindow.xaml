@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parosan"
         mc:Ignorable="d"
-        Title="Parosan" Height="603" Width="970" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" ResizeMode="NoResize">
+        Title="Parosan" Height="603" Width="970" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -67,7 +67,7 @@
         <Border Grid.Column="0" Grid.Row="1"  Height="357" VerticalAlignment="Bottom" >
             <StackPanel Margin="0,0,0,0" >
 
-                <Button Height="50" Style="{DynamicResource menu}">
+                <Button Height="50" Style="{DynamicResource menu}" x:Name="passwordsTab" Click="passwordsTabClick">
                     <DockPanel Width="200">
                         <Image Source="img/passwords.png" Height="40" Width="50"></Image>
                         <Label Content="Passwords" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
@@ -114,6 +114,12 @@
 
         </Border>
 
+        <Border Grid.Row="1" Grid.Column="1" >
+
+            <Grid x:Name="mainContent">
+                
+            </Grid>
+        </Border>
 
     </Grid>
 </Window>
