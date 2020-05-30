@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Parosan.Controller;
 
 namespace Parosan.View
 {
@@ -23,6 +24,12 @@ namespace Parosan.View
         public Password()
         {
             InitializeComponent();
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            PasswordController passwordController = new PasswordController();
+            passwordController.printPassword(passwordList);
         }
     }
 }

@@ -45,6 +45,7 @@ namespace Parosan
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             MainController.callUserControl(mainContent, new Password());
+           
         }
     }
 }
