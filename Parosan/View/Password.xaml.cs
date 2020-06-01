@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Parosan.Controller;
+using Parosan.Model;
 
 namespace Parosan.View
 {
@@ -21,6 +23,7 @@ namespace Parosan.View
     /// </summary>
     public partial class Password : UserControl
     {
+        
         public Password()
         {
             InitializeComponent();
@@ -29,7 +32,10 @@ namespace Parosan.View
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             PasswordController passwordController = new PasswordController();
-            passwordController.printPassword(passwordList);
+            passwordController.printPassword();
+
+
+            passowrdView.ItemsSource = passwordController.passwords;
         }
     }
 }

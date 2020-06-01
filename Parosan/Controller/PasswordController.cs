@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Windows.Controls;
 using System.Data;
+using Parosan.Model;
 
 namespace Parosan.Controller
 {
 
     class PasswordController
     {
-        public string databasePath = @"Data Source="+Environment.CurrentDirectory+"\\db\\parosan.db;Version=3;New=false;Compress=True;Read Only=False";
+        private string databasePath = @"Data Source="+Environment.CurrentDirectory+"\\db\\parosan.db;Version=3;New=false;Compress=True;Read Only=False";
         SQLiteConnection dbConnection;
+        public List<PasswordModel> passwords = new List<PasswordModel>();
+        
         public void connectionDB()
         {
 
@@ -23,16 +26,33 @@ namespace Parosan.Controller
 
         }
 
-        public void printPassword(DataGrid dataGrid)
+        public void printPassword()
         {
             connectionDB();
             SQLiteCommand sqlCommand = new SQLiteCommand("select * from password",dbConnection);
             SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(sqlCommand);
-            
+
+
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
-            dataGrid.ItemsSource = null;
-            dataGrid.ItemsSource = dataTable.DefaultView;
+          
+            
+            
+            
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                PasswordModel temp = new PasswordModel();
+                temp.id = dataTable.Rows[i]["id"].ToString();
+                temp.account_name = dataTable.Rows[i]["account_name"].ToString();
+                temp.username = dataTable.Rows[i]["username"].ToString();
+                temp.password = dataTable.Rows[i]["password"].ToString();
+                temp.user_id = dataTable.Rows[i]["user_id"].ToString();
+                temp.address = dataTable.Rows[i]["address"].ToString();
+                passwords.Add(temp);
+                
+            }
+
+
 
         }
     }
