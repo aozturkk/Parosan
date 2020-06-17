@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Parosan.Controller;
 using Parosan.Model;
+using Parosan.View;
 
 namespace Parosan.View
 {
@@ -23,7 +24,7 @@ namespace Parosan.View
     /// </summary>
     public partial class Password : UserControl
     {
-        
+        MainWindow mainWindow = (MainWindow)Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
         public Password()
         {
             InitializeComponent();
@@ -36,6 +37,13 @@ namespace Parosan.View
 
 
             passowrdView.ItemsSource = passwordController.passwords;
+        }   
+        private void addPassword_Click(object sender, RoutedEventArgs e)
+        {
+            AddPassword addPassword = new AddPassword();
+            addPassword.Owner = mainWindow;
+            mainWindow.Opacity = 0.4;
+            addPassword.ShowDialog();
         }
     }
 }

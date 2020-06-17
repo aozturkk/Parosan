@@ -171,6 +171,9 @@
   <ItemGroup>
     <Resource Include="View\menu_background.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\plus.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
