@@ -77,6 +77,9 @@
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Controller\PasswordController.cs" />
     <Compile Include="Model\PasswordModel.cs" />
+    <Compile Include="View\AddPassword.xaml.cs">
+      <DependentUpon>AddPassword.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Password.xaml.cs">
       <DependentUpon>Password.xaml</DependentUpon>
     </Compile>
@@ -92,6 +95,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\AddPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Password.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -161,7 +168,9 @@
   <ItemGroup>
     <Resource Include="img\passwords.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="View\menu_background.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
