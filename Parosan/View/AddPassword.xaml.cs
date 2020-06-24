@@ -23,5 +23,12 @@ namespace Parosan.View
         {
             InitializeComponent();
         }
+
+        private void cancelPasswordAdd_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            MainWindow mainWindow = (MainWindow)Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+            mainWindow.Opacity = 1;
+        }
     }
 }

@@ -44,6 +44,7 @@ namespace Parosan.View
             addPassword.Owner = mainWindow;
             mainWindow.Opacity = 0.4;
             addPassword.ShowDialog();
+            addPassword.Close();
         }
     }
 }
