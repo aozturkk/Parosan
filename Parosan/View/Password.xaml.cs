@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using Parosan.Controller;
 using Parosan.Model;
 using Parosan.View;
@@ -32,11 +34,7 @@ namespace Parosan.View
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            PasswordController passwordController = new PasswordController();
-            passwordController.printPassword();
-
-
-            passowrdView.ItemsSource = passwordController.passwords;
+            listPassword();
         }   
         private void addPassword_Click(object sender, RoutedEventArgs e)
         {
@@ -44,7 +42,29 @@ namespace Parosan.View
             addPassword.Owner = mainWindow;
             mainWindow.Opacity = 0.4;
             addPassword.ShowDialog();
-            addPassword.Close();
+
+            PasswordModel passwordModel = new PasswordModel();
+
+            passwordModel.id = "5";
+            passwordModel.account_name = addPassword.account_name.Text;
+            passwordModel.username = addPassword.username.Text;
+            passwordModel.password = addPassword.password.Text;
+            passwordModel.address = addPassword.address.Text;
+            passwordModel.user_id = "2";
+
+            PasswordController.passwords.Add(passwordModel);
+            passowrdView.ItemsSource = PasswordController.passwords;
+            ICollectionView view = CollectionViewSource.GetDefaultView(passowrdView.ItemsSource);
+            view.Refresh();
+
+        }
+        public void listPassword()
+        {
+           
+                     
+            PasswordController passwordController = new PasswordController();
+            passwordController.printPassword();         
+            passowrdView.ItemsSource = PasswordController.passwords;
         }
     }
 }

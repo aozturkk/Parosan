@@ -15,7 +15,7 @@ namespace Parosan.Controller
     {
         private string databasePath = @"Data Source="+Environment.CurrentDirectory+"\\db\\parosan.db;Version=3;New=false;Compress=True;Read Only=False";
         SQLiteConnection dbConnection;
-        public List<PasswordModel> passwords = new List<PasswordModel>();
+        public static List<PasswordModel> passwords = new List<PasswordModel>();
         
         public void connectionDB()
         {
