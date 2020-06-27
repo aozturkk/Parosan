@@ -41,10 +41,6 @@ namespace Parosan.View
             MainWindow mainWindow = (MainWindow)Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
             mainWindow.Opacity = 1;
             
-
-
-
-            //passowrdView.ItemsSource = passwordController.passwords;
         }
 
         private void PasswordsTab_Click(object sender, RoutedEventArgs e)

@@ -39,7 +39,9 @@ namespace Parosan
 
         private void passwordsTabClick(object sender, RoutedEventArgs e)
         {
-            MainController.callUserControl(mainContent,new Password());
+            Password password = new Password();
+            password.passwordView.Items.Clear();
+            MainController.callUserControl(mainContent, password);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
