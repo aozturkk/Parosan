@@ -64,9 +64,6 @@ namespace Parosan.Controller
 
             SQLiteCommand sqlCommand = new SQLiteCommand(dbConnection);
 
-
-
-
             sqlCommand.CommandText = "insert into password (id, account_name,username,password,address,user_id) Values (@id, @account_name,@username,@password,@address,@user_id)";
             sqlCommand.Prepare();
             sqlCommand.Parameters.AddWithValue("id", lastID);
@@ -77,11 +74,34 @@ namespace Parosan.Controller
             sqlCommand.Parameters.AddWithValue("user_id", newPassword.user_id);
             sqlCommand.ExecuteNonQuery();
 
-
+            dbConnection.Close();
         }
         public void deletePassword(int id)
         {
+            connectionDB();
 
+            SQLiteCommand sqlCommand = new SQLiteCommand(dbConnection);
+            sqlCommand.CommandText = "DELETE FROM password WHERE id=" + id + "";
+            sqlCommand.ExecuteScalar();
+            dbConnection.Close();
+        }
+
+        public void updatePassword(PasswordModel updatedPassword)
+        {
+            connectionDB();
+
+            SQLiteCommand sqlCommand = new SQLiteCommand(dbConnection);
+
+            sqlCommand.CommandText = "update password set account_name=@account_name,username=@username,password=@password,address=@address where id = '" + updatedPassword.id+"'";
+      
+            sqlCommand.Parameters.AddWithValue("@account_name", updatedPassword.account_name);
+            sqlCommand.Parameters.AddWithValue("@username", updatedPassword.username);
+            sqlCommand.Parameters.AddWithValue("@password", updatedPassword.password);
+            sqlCommand.Parameters.AddWithValue("@address", updatedPassword.address);
+ 
+            sqlCommand.ExecuteNonQuery();
+
+            dbConnection.Close();
         }
 
     }

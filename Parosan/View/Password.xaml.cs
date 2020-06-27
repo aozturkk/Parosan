@@ -50,7 +50,7 @@ namespace Parosan.View
             PasswordModel passwordModel = new PasswordModel();
             
 
-            passwordModel.id = 5;
+           
             passwordModel.account_name = addPassword.account_name.Text;
             passwordModel.username = addPassword.username.Text;
             passwordModel.password = addPassword.password.Text;
@@ -83,6 +83,43 @@ namespace Parosan.View
 
         private void deletePassword_Click(object sender, RoutedEventArgs e)
         {
+            PasswordController passwordController = new PasswordController();
+
+            passwordController.deletePassword(selectedPassword.id);
+
+            passwordView.ItemsSource = passwordController.printPassword();
+            ICollectionView view = CollectionViewSource.GetDefaultView(passwordView.ItemsSource);
+            view.Refresh();
+        }
+
+        private void editPassword_Click(object sender, RoutedEventArgs e)
+        {
+            AddPassword updatePassword = new AddPassword();
+
+            updatePassword.account_name.Text = selectedPassword.account_name;
+            updatePassword.username.Text = selectedPassword.username;
+            updatePassword.password.Text = selectedPassword.password;
+            updatePassword.address.Text = selectedPassword.address;
+
+            updatePassword.Owner = mainWindow;
+            mainWindow.Opacity = 0.4;
+            updatePassword.ShowDialog();
+
+            PasswordModel updetedPassword = new PasswordModel();
+
+            updetedPassword.id = selectedPassword.id;
+            updetedPassword.account_name = updatePassword.account_name.Text;
+            updetedPassword.username = updatePassword.username.Text;
+            updetedPassword.password = updatePassword.password.Text;
+            updetedPassword.address = updatePassword.address.Text;
+            updetedPassword.user_id = "1";
+
+            PasswordController passwordController = new PasswordController();
+            passwordController.updatePassword(updetedPassword);
+
+            passwordView.ItemsSource = passwordController.printPassword();
+            ICollectionView view = CollectionViewSource.GetDefaultView(passwordView.ItemsSource);
+            view.Refresh();
 
         }
     }
