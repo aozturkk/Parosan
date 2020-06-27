@@ -1,0 +1,78 @@
+﻿<Window x:Class="Parosan.LoginPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Parosan"
+        mc:Ignorable="d"
+        Title="LoginPage" Height="647" Width="400" WindowStyle="None" Icon="img/logo.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+
+
+
+        <Border Grid.Row="0" >
+            <Image Source="img/menu_background.jpg" Stretch="Fill" ></Image>
+
+        </Border>
+
+        <Border  Grid.Row="0" >
+            <DockPanel Width="60" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Button VerticalAlignment="Top" Width="30" Height="28" Content="__" Foreground="White" x:Name="minimizeButton" Click="minimize" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                <Button Width="30" Height="30" Content="X" Foreground="White" x:Name="exitButtonHeader" Click="exit" Background="{x:Null}" BorderBrush="{x:Null}"/>
+            </DockPanel>
+        </Border>
+
+
+        <Canvas Grid.Row="0">
+
+            <Image  Height="100" Width="100" Canvas.Left="150" Canvas.Top="120" Source="img/logo.png"></Image>
+
+            <!--Username Textbox and Placeholder -->
+            <TextBox Height="25" Width="200" x:Name="usernameTextBox" Canvas.Left="100" Canvas.Top="250" Background="#FFC7D1FF" FontSize="14" FontFamily="Oswald" Foreground="#FF232121"/>
+          
+            <TextBlock Canvas.Left="100" Canvas.Top="255" IsHitTestVisible="False" Text="Username" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=usernameTextBox}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            
+            <!--Password Textbox and Placeholder -->
+            <TextBox Height="25" Width="200" x:Name="passwordTextBox" Canvas.Left="100" Canvas.Top="290" Background="#FFC7D1FF" FontSize="14" Foreground="#FF232121" FontFamily="Oswald"/>
+
+            <TextBlock Canvas.Left="100" Canvas.Top="295" IsHitTestVisible="False" Text="Password" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=passwordTextBox}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+
+            <Button Style="{DynamicResource passwordUserControlButton}" Content="Login" x:Name="login"  Height="25" Width="100" Canvas.Left="90" Canvas.Top="350" Margin="0" Click="login_Click"/>
+            <Button Style="{DynamicResource passwordUserControlButton}" Content="Register" x:Name="cancel"  Height="25" Width="100" Canvas.Left="210" Canvas.Top="350" Margin="0"/>
+
+            <Label x:Name="loginFaildLabel" Content="" Canvas.Left="110" Canvas.Top="400"  />
+
+        </Canvas>
+
+    
+
+
+    </Grid>
+</Window>
