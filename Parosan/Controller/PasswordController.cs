@@ -56,7 +56,7 @@ namespace Parosan.Controller
                 passwords.Add(temp);
                 lastID = Convert.ToInt32(dataTable.Rows[i]["id"]);
             }
-            lastID++;
+           
             dbConnection.Close();
             return passwords;
 
@@ -71,7 +71,7 @@ namespace Parosan.Controller
 
             sqlCommand.CommandText = "insert into password (id, account_name,username,password,address,user_id) Values (@id, @account_name,@username,@password,@address,@user_id)";
             sqlCommand.Prepare();
-            sqlCommand.Parameters.AddWithValue("id", lastID);
+            sqlCommand.Parameters.AddWithValue("id", lastID + 1 );
             sqlCommand.Parameters.AddWithValue("account_name", cryptoService.textEncrytion( newPassword.account_name));
             sqlCommand.Parameters.AddWithValue("username", cryptoService.textEncrytion(newPassword.username));
             sqlCommand.Parameters.AddWithValue("password", cryptoService.textEncrytion(newPassword.password));

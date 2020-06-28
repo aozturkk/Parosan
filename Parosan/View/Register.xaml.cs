@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Parosan.Controller;
 
 namespace Parosan.View
 {
@@ -26,10 +27,36 @@ namespace Parosan.View
 
         private void register_Click(object sender, RoutedEventArgs e)
         {
-            if(password.Text != passwordAgain.Text)
+            RegisterController registerController = new RegisterController();
+
+            if (username.Text==""||password.Text=="" || passwordAgain.Text == "")
+            {
+                resultLabel.Content = "Please fill all area !";
+            }
+            else if(password.Text != passwordAgain.Text)
             {
                 resultLabel.Content = "Passwords Mismatch !";
             }
+            else
+            {
+                if (registerController.registerUser(username.Text, password.Text))
+                {
+                    resultLabel.Foreground = new SolidColorBrush(Colors.Blue);
+                    resultLabel.Content = "Register Completed !";
+                    username.Text = "";
+                    password.Text = "";
+                    passwordAgain.Text = "";
+                   
+
+                }
+                else
+                {
+                    resultLabel.Content = "Username is used !";
+                }
+
+            }
+
+
         }
 
         private void cancelPasswordAdd_Click(object sender, RoutedEventArgs e)
