@@ -26,12 +26,20 @@ namespace Parosan.View
 
         private void register_Click(object sender, RoutedEventArgs e)
         {
-
+            if(password.Text != passwordAgain.Text)
+            {
+                resultLabel.Content = "Passwords Mismatch !";
+            }
         }
 
         private void cancelPasswordAdd_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void cancelRegister_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

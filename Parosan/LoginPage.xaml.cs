@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Parosan.Controller;
+using Parosan.View;
 
 namespace Parosan
 {
@@ -54,6 +55,12 @@ namespace Parosan
             }
         }
 
-       
+        private void register_Click(object sender, RoutedEventArgs e)
+        {
+
+            Register register = new Register();
+            register.ShowDialog();
+            
+        }
     }
 }

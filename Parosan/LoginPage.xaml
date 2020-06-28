@@ -65,7 +65,7 @@
             </TextBlock>
 
             <Button Style="{DynamicResource passwordUserControlButton}" Content="Login" x:Name="login"  Height="25" Width="100" Canvas.Left="90" Canvas.Top="350" Margin="0" Click="login_Click"/>
-            <Button Style="{DynamicResource passwordUserControlButton}" Content="Register" x:Name="cancel"  Height="25" Width="100" Canvas.Left="210" Canvas.Top="350" Margin="0"/>
+            <Button Style="{DynamicResource passwordUserControlButton}" Content="Register" x:Name="register"  Height="25" Width="100" Canvas.Left="210" Canvas.Top="350" Margin="0" Click="register_Click"/>
 
             <Label x:Name="loginFaildLabel" Content="" Canvas.Left="110" Canvas.Top="400"  />
 

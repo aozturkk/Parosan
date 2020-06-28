@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parosan.View"
         mc:Ignorable="d"
-        Title="Register"  Height="400" Width="647" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+        Title="Register"  Height="400" Width="445" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="9*"/>
@@ -14,8 +14,8 @@
         <Canvas Grid.RowSpan="2">
 
 
-            <Rectangle Height="34" Width="485" Canvas.Left="83" Canvas.Top="48" Fill="#FF3E67D6" Panel.ZIndex="1"/>
-            <Ellipse Height="90" Width="90" Canvas.Left="46" Fill="#FFF5F4F4" Panel.ZIndex="2" StrokeThickness="4" Canvas.Top="10">
+            <Rectangle Height="34" Width="385" Canvas.Left="30" Canvas.Top="48" Fill="#FF3E67D6" Panel.ZIndex="1"/>
+            <Ellipse Height="70" Width="70" Canvas.Left="0" Fill="#FFF5F4F4" Panel.ZIndex="2" StrokeThickness="4" Canvas.Top="18">
                 <Ellipse.Stroke>
                     <RadialGradientBrush Center="0.5,1">
                         <GradientStop Color="#FFC4CFEA" Offset="0.911"/>
@@ -25,26 +25,29 @@
                     </RadialGradientBrush>
                 </Ellipse.Stroke>
             </Ellipse>
-            <Image Source="../img/plus.png" Panel.ZIndex="3" Canvas.Left="64" Canvas.Top="26" Height="56" Width="56"/>
-            <Label Content="Register" Foreground="White" Panel.ZIndex="4" Canvas.Left="151" Canvas.Top="50" FontSize="16"/>
-            <Border Height="300 " Width="485" Canvas.Left="83" Canvas.Top="48" Background="#FFE0E0E0" CornerRadius="0,0,50,50" >
+            <Image Source="../img/register_logo.png" Panel.ZIndex="3" Canvas.Top="25" Height="50" Width="50" Canvas.Left="12"/>
+            <Label Content="Register" Foreground="White" Panel.ZIndex="4" Canvas.Left="70" Canvas.Top="50" FontSize="16"/>
+            <Border Height="300 " Width="385"  Canvas.Top="50" Canvas.Left="30" Background="#FFE0E0E0" CornerRadius="0,0,50,50" >
                 <Border.Effect>
                     <DropShadowEffect Direction="250" Opacity="0.4"/>
                 </Border.Effect>
+                
 
             </Border>
-            
-            <Label Content="Username : " Canvas.Left="131" Canvas.Top="140"/>
-            <TextBox Height="25" Width="200" x:Name="username" Canvas.Left="260" Canvas.Top="140"/>
 
-            <Label Content="Password : " Canvas.Left="131" Canvas.Top="175"/>
-            <TextBox Height="25" Width="200" x:Name="password" Canvas.Left="260" Canvas.Top="175"/>
+            <Label Content="Username : " Canvas.Left="40" Canvas.Top="140"/>
+            <TextBox Height="25" Width="200" x:Name="username" Canvas.Left="160" Canvas.Top="140"/>
 
-            <Label Content="Password ( Again) : " Canvas.Left="131" Canvas.Top="210"/>
-            <TextBox Height="25" Width="200" x:Name="address" Canvas.Left="260" Canvas.Top="210"/>
+            <Label Content="Password : " Canvas.Left="40" Canvas.Top="175"/>
+            <TextBox Height="25" Width="200" x:Name="password" Canvas.Left="160" Canvas.Top="175"/>
 
-            <Button Style="{DynamicResource passwordUserControlButton}" Content="Register" x:Name="register"  Height="25" Width="100" Canvas.Left="214" Canvas.Top="291" Margin="0" Click="register_Click" />
-            <Button Style="{DynamicResource passwordUserControlButton}" Content="Cancel" x:Name="cancelPasswordAdd"  Height="25" Width="100" Canvas.Left="360" Canvas.Top="291" Margin="0" Click="cancelPasswordAdd_Click"/>
+            <Label Content="Password ( Again ) : " Canvas.Left="40" Canvas.Top="210"/>
+            <TextBox Height="25" Width="200" x:Name="passwordAgain" Canvas.Left="160" Canvas.Top="210"/>
+
+            <Label x:Name="resultLabel" Content=""  Canvas.Left="160" Canvas.Top="250" Foreground="Red"/>
+
+            <Button Style="{DynamicResource passwordUserControlButton}" Content="Register" x:Name="register"  Height="25" Width="100" Canvas.Left="100" Canvas.Top="291" Margin="0" Click="register_Click" />
+            <Button Style="{DynamicResource passwordUserControlButton}" Content="Cancel" x:Name="cancelRegister"  Height="25" Width="100" Canvas.Left="220" Canvas.Top="291" Margin="0" Click="cancelRegister_Click"/>
 
 
         </Canvas>
