@@ -46,8 +46,8 @@ namespace Parosan.Controller
             if (count == 1)
             {
                 UserModel.username = username;
-                UserModel.key = hasingService.sha256Hash(username + password );
-                UserModel.iv = hasingService.md5hash(username+"parosan");
+                UserModel.key = hasingService.md5hash(username + password );
+                UserModel.iv = (hasingService.md5hash(username + "parosan")).Substring(0, 16); 
                 return true;
             }
             else

@@ -51,5 +51,12 @@ namespace Parosan
             MainController.callUserControl(mainContent, new Password());
            
         }
+
+       
+
+        private void exitTab_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
     }
 }

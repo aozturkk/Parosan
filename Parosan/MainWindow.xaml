@@ -102,7 +102,7 @@
                     </DockPanel>
                 </Button>
 
-                <Button Height="50" Style="{DynamicResource menu}" >
+                <Button Height="50" Style="{DynamicResource menu}" x:Name="exitTab" Click="exitTab_Click" >
                     <DockPanel Width="200">
                         <Image Source="img/exit.png" Width="50" Height="30"></Image>
                         <Label Content="Exit" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>

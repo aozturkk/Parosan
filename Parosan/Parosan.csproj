@@ -82,12 +82,16 @@
     </Compile>
     <Compile Include="Model\PasswordModel.cs" />
     <Compile Include="Model\UserModel.cs" />
+    <Compile Include="Service\CryptoService.cs" />
     <Compile Include="Service\HasingService.cs" />
     <Compile Include="View\AddPassword.xaml.cs">
       <DependentUpon>AddPassword.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Password.xaml.cs">
       <DependentUpon>Password.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Register.xaml.cs">
+      <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
     <Page Include="LoginPage.xaml">
       <SubType>Designer</SubType>
@@ -110,6 +114,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Password.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Register.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

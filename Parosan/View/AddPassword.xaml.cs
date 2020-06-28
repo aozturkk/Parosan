@@ -40,7 +40,18 @@ namespace Parosan.View
             this.Close();
             MainWindow mainWindow = (MainWindow)Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
             mainWindow.Opacity = 1;
-            
+
+            PasswordModel passwordModel = new PasswordModel();
+            passwordModel.account_name = account_name.Text;
+            passwordModel.username = username.Text;
+            passwordModel.password = password.Text;
+            passwordModel.address = address.Text;
+
+
+
+            PasswordController passwordController = new PasswordController();
+            passwordController.addPassword(passwordModel);
+
         }
 
         private void PasswordsTab_Click(object sender, RoutedEventArgs e)
