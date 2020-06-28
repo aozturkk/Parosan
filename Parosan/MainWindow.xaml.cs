@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Parosan.Controller;
 using Parosan.View;
+using Parosan.Model;
 
 namespace Parosan
 {
@@ -25,6 +26,7 @@ namespace Parosan
         public MainWindow()
         {
             InitializeComponent();
+            username.Content = UserModel.username;
         }
 
         private void exit(object sender, RoutedEventArgs e)

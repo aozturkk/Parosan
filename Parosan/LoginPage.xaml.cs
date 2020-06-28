@@ -43,7 +43,10 @@ namespace Parosan
 
             if (result) 
             {
-                Console.WriteLine("login succesful !");
+                MainWindow mainWindow = new MainWindow();
+                this.Close();
+                mainWindow.Show();
+                
             }
             else
             {

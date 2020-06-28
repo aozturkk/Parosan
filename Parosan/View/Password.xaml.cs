@@ -55,7 +55,7 @@ namespace Parosan.View
             passwordModel.username = addPassword.username.Text;
             passwordModel.password = addPassword.password.Text;
             passwordModel.address = addPassword.address.Text;
-            passwordModel.user_id = "1";
+           
 
             
             PasswordController passwordController = new PasswordController();

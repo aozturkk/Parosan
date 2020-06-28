@@ -4,6 +4,8 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Parosan.Model;
+using Parosan.Service;
 
 namespace Parosan.Controller
 {
@@ -15,25 +17,37 @@ namespace Parosan.Controller
 
         public bool checkUser(string username,string password)
         {
+            HasingService hasingService = new HasingService();
+
+            string usernameHash = hasingService.sha256Hash( username );
+            string passwordHash = hasingService.sha256Hash( password );
+
 
             dbConnection = new SQLiteConnection(databasePath);
             dbConnection.Open();
             SQLiteCommand sqlCommand = new SQLiteCommand("select * from user where username=@username and password = @password", dbConnection);
 
 
-            sqlCommand.Parameters.AddWithValue("@username", username);
-            sqlCommand.Parameters.AddWithValue("@password", password);
-            sqlCommand.ExecuteNonQuery();
+            sqlCommand.Parameters.AddWithValue("@username", usernameHash);
+            sqlCommand.Parameters.AddWithValue("@password", passwordHash);
+            
             SQLiteDataReader reader = sqlCommand.ExecuteReader();
             int count = 0;
 
             while (reader.Read())
             {
+                UserModel.id = reader.GetString(reader.GetOrdinal("id"));               
                 count++;
             }
 
+            reader.Close();
+            dbConnection.Close();
+
             if (count == 1)
             {
+                UserModel.username = username;
+                UserModel.key = hasingService.sha256Hash(username + password );
+                UserModel.iv = hasingService.md5hash(username+"parosan");
                 return true;
             }
             else

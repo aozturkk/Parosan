@@ -30,7 +30,7 @@ namespace Parosan.Controller
         public List<PasswordModel> printPassword()
         {
             connectionDB();
-            SQLiteCommand sqlCommand = new SQLiteCommand("select * from password", dbConnection);
+            SQLiteCommand sqlCommand = new SQLiteCommand("select * from password where user_id="+UserModel.id, dbConnection);
             SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(sqlCommand);
 
 
@@ -71,7 +71,7 @@ namespace Parosan.Controller
             sqlCommand.Parameters.AddWithValue("username", newPassword.username);
             sqlCommand.Parameters.AddWithValue("password", newPassword.password);
             sqlCommand.Parameters.AddWithValue("address", newPassword.address);
-            sqlCommand.Parameters.AddWithValue("user_id", newPassword.user_id);
+            sqlCommand.Parameters.AddWithValue("user_id", UserModel.id);
             sqlCommand.ExecuteNonQuery();
 
             dbConnection.Close();

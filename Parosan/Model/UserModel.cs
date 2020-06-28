@@ -8,9 +8,10 @@ namespace Parosan.Model
 {
     public class UserModel
     {
-        public string id { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
+        public static string id { get; set; }
+        public static string username { get; set; }
+        public static string key { get; set; }
+        public static string iv { get; set; }
 
     }
 }

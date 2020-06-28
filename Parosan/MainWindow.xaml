@@ -59,7 +59,7 @@
         <Border  Grid.Column="0" Grid.Row="1"  Margin="0,20,0,0">
             <StackPanel  HorizontalAlignment="Center">
                 <Image HorizontalAlignment="Center" Height="93" VerticalAlignment="Top" Width="90" Source="img/user.png"></Image>
-                <Label Content="aozturk" VerticalAlignment="Bottom" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" Foreground="#FF272222" FontWeight="Bold" Margin="0,15,0,0"></Label>
+                <Label x:Name="username" Content="" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" Foreground="#FF272222" FontWeight="Bold" Margin="0,15,0,0"></Label>
             </StackPanel>
 
         </Border>
