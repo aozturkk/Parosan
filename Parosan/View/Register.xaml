@@ -39,10 +39,10 @@
             <TextBox Height="25" Width="200" x:Name="username" Canvas.Left="160" Canvas.Top="140"/>
 
             <Label Content="Password : " Canvas.Left="40" Canvas.Top="175"/>
-            <TextBox Height="25" Width="200" x:Name="password" Canvas.Left="160" Canvas.Top="175"/>
+            <PasswordBox Height="25" Width="200" x:Name="password" Canvas.Left="160" Canvas.Top="175"/>
 
             <Label Content="Password ( Again ) : " Canvas.Left="40" Canvas.Top="210"/>
-            <TextBox Height="25" Width="200" x:Name="passwordAgain" Canvas.Left="160" Canvas.Top="210"/>
+            <PasswordBox Height="25" Width="200" x:Name="passwordAgain" Canvas.Left="160" Canvas.Top="210"/>
 
             <Label x:Name="resultLabel" Content=""  Canvas.Left="160" Canvas.Top="250" Foreground="Red"/>
 

@@ -29,23 +29,23 @@ namespace Parosan.View
         {
             RegisterController registerController = new RegisterController();
 
-            if (username.Text==""||password.Text=="" || passwordAgain.Text == "")
+            if (username.Text==""||password.Password=="" || passwordAgain.Password == "")
             {
                 resultLabel.Content = "Please fill all area !";
             }
-            else if(password.Text != passwordAgain.Text)
+            else if(password.Password != passwordAgain.Password)
             {
                 resultLabel.Content = "Passwords Mismatch !";
             }
             else
             {
-                if (registerController.registerUser(username.Text, password.Text))
+                if (registerController.registerUser(username.Text, password.Password))
                 {
                     resultLabel.Foreground = new SolidColorBrush(Colors.Blue);
                     resultLabel.Content = "Register Completed !";
                     username.Text = "";
-                    password.Text = "";
-                    passwordAgain.Text = "";
+                    password.Password = "";
+                    passwordAgain.Password = "";
                    
 
                 }

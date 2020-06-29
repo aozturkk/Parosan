@@ -40,7 +40,7 @@ namespace Parosan
         {
             LoginController loginController = new LoginController();
             
-            bool result = loginController.checkUser(usernameTextBox.Text,passwordTextBox.Text);
+            bool result = loginController.checkUser(usernameTextBox.Text,passwordBox.Password);
 
             if (result) 
             {
@@ -61,6 +61,21 @@ namespace Parosan
             Register register = new Register();
             register.ShowDialog();
             
+        }
+
+        private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+
+            if (passwordBox.Password.Length == 0)
+            {
+                passwordTextBlock.Text = "Password";
+            }
+
+            else
+            {
+                passwordTextBlock.Text = "";
+            }
+               
         }
     }
 }
