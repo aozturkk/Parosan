@@ -100,7 +100,7 @@ namespace Parosan.View
             updetedPassword.username = updatePassword.username.Text;
             updetedPassword.password = updatePassword.password.Text;
             updetedPassword.address = updatePassword.address.Text;
-            updetedPassword.user_id = "1";
+            updetedPassword.user_id = UserModel.id;
 
             PasswordController passwordController = new PasswordController();
             passwordController.updatePassword(updetedPassword);

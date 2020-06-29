@@ -51,7 +51,7 @@ namespace Parosan.Controller
                 temp.account_name = cryptoService.textDecrytion( dataTable.Rows[i]["account_name"].ToString() );
                 temp.username = cryptoService.textDecrytion( dataTable.Rows[i]["username"].ToString() );
                 temp.password = cryptoService.textDecrytion( dataTable.Rows[i]["password"].ToString() );
-                temp.user_id = dataTable.Rows[i]["user_id"].ToString();
+                temp.user_id = Convert.ToInt32( dataTable.Rows[i]["user_id"] );
                 temp.address = cryptoService.textDecrytion(dataTable.Rows[i]["address"].ToString() );
                 passwords.Add(temp);
                 lastID = Convert.ToInt32(dataTable.Rows[i]["id"]);
@@ -69,8 +69,7 @@ namespace Parosan.Controller
             connectionDB();
             SQLiteCommand sqlCommand = new SQLiteCommand(dbConnection);
 
-            sqlCommand.CommandText = "insert into password (id, account_name,username,password,address,user_id) Values (@id, @account_name,@username,@password,@address,@user_id)";
-            sqlCommand.Prepare();
+            sqlCommand.CommandText = "insert into password (id, account_name,username,password,address,user_id) Values (@id, @account_name,@username,@password,@address,@user_id)";          
             sqlCommand.Parameters.AddWithValue("id", lastID + 1 );
             sqlCommand.Parameters.AddWithValue("account_name", cryptoService.textEncrytion( newPassword.account_name));
             sqlCommand.Parameters.AddWithValue("username", cryptoService.textEncrytion(newPassword.username));

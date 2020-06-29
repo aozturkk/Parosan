@@ -36,7 +36,7 @@ namespace Parosan.Controller
 
             while (reader.Read())
             {
-                UserModel.id = reader.GetString(reader.GetOrdinal("id"));               
+                UserModel.id = reader.GetInt32(reader.GetOrdinal("id")) ;               
                 count++;
             }
 

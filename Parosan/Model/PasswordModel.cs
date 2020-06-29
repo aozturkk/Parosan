@@ -13,7 +13,7 @@ namespace Parosan.Model
         public String username { get; set; }
         public String password { get; set; }
         public String address { get; set; }
-        public String user_id { get; set; }
+        public int user_id { get; set; }
 
 
     }

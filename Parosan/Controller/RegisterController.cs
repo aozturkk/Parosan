@@ -14,30 +14,63 @@ namespace Parosan.Controller
     {
         private string databasePath = @"Data Source=" + Environment.CurrentDirectory + "\\db\\parosan.db;Version=3;New=false;Compress=True;Read Only=False";
         SQLiteConnection dbConnection;
-
+        private static int lastID = 0;
         public bool registerUser(string username, string password)
         {
 
             HasingService hasingService = new HasingService();
 
+
+            if (checkUsername(hasingService.sha256Hash(username)))
+            {
+
+            
+                SQLiteCommand sqlCommand = new SQLiteCommand(dbConnection);
+
+                sqlCommand.CommandText = "insert into user (id, username,password) Values (@id,@username,@password)";
+                sqlCommand.Parameters.AddWithValue("id", lastID + 1 );
+                sqlCommand.Parameters.AddWithValue("username", hasingService.sha256Hash(username));
+                sqlCommand.Parameters.AddWithValue("password", hasingService.sha256Hash(password));
+
+
+                sqlCommand.ExecuteNonQuery();
+
+                dbConnection.Close();
+            
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+            
+        }
+
+        //Check this username been used before
+        public bool checkUsername(string username)
+        {
+            
+
             dbConnection = new SQLiteConnection(databasePath);
             dbConnection.Open();
 
             SQLiteCommand sqlCommand = new SQLiteCommand("select * from user ", dbConnection);
-            SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(sqlCommand);
-            DataTable dataTable = new DataTable();
-            dataAdapter.Fill(dataTable);
-            string lastID;
-            for (int i = 0; i < dataTable.Rows.Count; i++)
+            SQLiteDataReader reader = sqlCommand.ExecuteReader();
+
+          
+
+            while (reader.Read())
             {
-                if (hasingService.sha256Hash( username ) == dataTable.Rows[i]["username"].ToString())
+                if (username == reader.GetString(reader.GetOrdinal("username")) )
                 {
+                    dbConnection.Close();
                     return false;
                 }
-               lastID = dataTable.Rows[i]["id"].ToString();
+                lastID = reader.GetInt32(reader.GetOrdinal("id")); 
             }
 
-
+           
             return true;
         }
     }
