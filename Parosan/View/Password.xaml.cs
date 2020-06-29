@@ -43,11 +43,23 @@ namespace Parosan.View
         private void addPassword_Click(object sender, RoutedEventArgs e)
         {
             AddPassword addPassword = new AddPassword();
+            PasswordController passwordController = new PasswordController();
+
             addPassword.Owner = mainWindow;
             mainWindow.Opacity = 0.4;
             addPassword.ShowDialog();
+            PasswordModel passwordModel = new PasswordModel();
+            passwordModel.account_name = addPassword.account_name.Text;
+            passwordModel.username = addPassword.username.Text;
+            passwordModel.password = addPassword.password.Text;
+            passwordModel.address = addPassword.address.Text;
 
-            PasswordController passwordController = new PasswordController();
+
+
+           
+            passwordController.addPassword(passwordModel);
+
+            
             passwordView.ItemsSource = passwordController.printPassword(); 
             ICollectionView view = CollectionViewSource.GetDefaultView(passwordView.ItemsSource);
             view.Refresh();
