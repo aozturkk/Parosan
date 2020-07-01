@@ -48,21 +48,27 @@ namespace Parosan.View
             addPassword.Owner = mainWindow;
             mainWindow.Opacity = 0.4;
             addPassword.ShowDialog();
-            PasswordModel passwordModel = new PasswordModel();
-            passwordModel.account_name = addPassword.account_name.Text;
-            passwordModel.username = addPassword.username.Text;
-            passwordModel.password = addPassword.password.Text;
-            passwordModel.address = addPassword.address.Text;
+
+
+            if(addPassword.account_name.Text!=""|| addPassword.username.Text!="" || addPassword.password.Text != "")
+            {
+                PasswordModel passwordModel = new PasswordModel();
+                passwordModel.account_name = addPassword.account_name.Text;
+                passwordModel.username = addPassword.username.Text;
+                passwordModel.password = addPassword.password.Text;
+                passwordModel.address = addPassword.address.Text;
 
 
 
-           
-            passwordController.addPassword(passwordModel);
 
-            
-            passwordView.ItemsSource = passwordController.printPassword(); 
-            ICollectionView view = CollectionViewSource.GetDefaultView(passwordView.ItemsSource);
-            view.Refresh();
+                passwordController.addPassword(passwordModel);
+
+
+                passwordView.ItemsSource = passwordController.printPassword();
+                ICollectionView view = CollectionViewSource.GetDefaultView(passwordView.ItemsSource);
+                view.Refresh();
+
+            }
 
         }
         public void listPassword()
@@ -105,22 +111,24 @@ namespace Parosan.View
             mainWindow.Opacity = 0.4;
             updatePassword.ShowDialog();
 
-            PasswordModel updetedPassword = new PasswordModel();
+            if (updatePassword.account_name.Text != "" || updatePassword.username.Text != "" || updatePassword.password.Text != "")
+            {
+                PasswordModel updetedPassword = new PasswordModel();
 
-            updetedPassword.id = selectedPassword.id;
-            updetedPassword.account_name = updatePassword.account_name.Text;
-            updetedPassword.username = updatePassword.username.Text;
-            updetedPassword.password = updatePassword.password.Text;
-            updetedPassword.address = updatePassword.address.Text;
-            updetedPassword.user_id = UserModel.id;
+                updetedPassword.id = selectedPassword.id;
+                updetedPassword.account_name = updatePassword.account_name.Text;
+                updetedPassword.username = updatePassword.username.Text;
+                updetedPassword.password = updatePassword.password.Text;
+                updetedPassword.address = updatePassword.address.Text;
+                updetedPassword.user_id = UserModel.id;
 
-            PasswordController passwordController = new PasswordController();
-            passwordController.updatePassword(updetedPassword);
+                PasswordController passwordController = new PasswordController();
+                passwordController.updatePassword(updetedPassword);
 
-            passwordView.ItemsSource = passwordController.printPassword();
-            ICollectionView view = CollectionViewSource.GetDefaultView(passwordView.ItemsSource);
-            view.Refresh();
-
+                passwordView.ItemsSource = passwordController.printPassword();
+                ICollectionView view = CollectionViewSource.GetDefaultView(passwordView.ItemsSource);
+                view.Refresh();
+            }
         }
     }
 }

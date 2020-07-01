@@ -28,9 +28,14 @@ namespace Parosan.View
 
         private void cancelPasswordAdd_Click(object sender, RoutedEventArgs e)
         {
+            account_name.Text = "";
+            username.Text = "";
+            password.Text = "";
+            address.Text = "";
             this.Close();
             MainWindow mainWindow = (MainWindow)Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
             mainWindow.Opacity = 1;
+
         }
 
         private void passwordAdd_Click(object sender, RoutedEventArgs e)
