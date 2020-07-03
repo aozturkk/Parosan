@@ -80,11 +80,13 @@
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Controller\PasswordController.cs" />
+    <Compile Include="Controller\PaymentController.cs" />
     <Compile Include="Controller\RegisterController.cs" />
     <Compile Include="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\PasswordModel.cs" />
+    <Compile Include="Model\PaymentModel.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Service\CryptoService.cs" />
     <Compile Include="Service\HasingService.cs" />
