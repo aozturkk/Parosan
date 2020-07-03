@@ -42,7 +42,7 @@ namespace Parosan
         private void passwordsTabClick(object sender, RoutedEventArgs e)
         {
             Password password = new Password();
-            password.passwordView.Items.Clear();
+           // password.passwordView.Items.Clear();
             MainController.callUserControl(mainContent, password);
         }
 
@@ -52,7 +52,13 @@ namespace Parosan
            
         }
 
-       
+
+        private void paymentsTab_Click(object sender, RoutedEventArgs e)
+        {
+            Payment payment = new Payment();
+            // password.passwordView.Items.Clear();
+            MainController.callUserControl(mainContent, payment);
+        }
 
         private void exitTab_Click(object sender, RoutedEventArgs e)
         {

@@ -76,7 +76,7 @@
 
               
 
-                <Button Height="50" Style="{DynamicResource menu}">
+                <Button Height="50" Style="{DynamicResource menu}" x:Name="paymentsTab" Click="paymentsTab_Click">
                     <DockPanel Width="200"  >
                         <Image Source="img/payments.png" Width="50" Height="40"></Image>
                         <Label Content="Payments" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
