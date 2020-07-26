@@ -39,7 +39,14 @@ namespace Parosan.View
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             listPassword();
-        }   
+        }
+
+        public void listPassword()
+        {
+            PasswordController passwordController = new PasswordController();
+            passwordView.ItemsSource = passwordController.printPassword();
+
+        }
         private void addPassword_Click(object sender, RoutedEventArgs e)
         {
             AddPassword addPassword = new AddPassword();
@@ -71,12 +78,7 @@ namespace Parosan.View
             }
 
         }
-        public void listPassword()
-        {
-            PasswordController passwordController = new PasswordController();
-            passwordView.ItemsSource = passwordController.printPassword(); 
-
-        }
+   
 
         private void passwordView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

@@ -93,6 +93,9 @@
     <Compile Include="View\AddPassword.xaml.cs">
       <DependentUpon>AddPassword.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AddPayment.xaml.cs">
+      <DependentUpon>AddPayment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Password.xaml.cs">
       <DependentUpon>Password.xaml</DependentUpon>
     </Compile>
@@ -119,6 +122,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\AddPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddPayment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

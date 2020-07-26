@@ -32,25 +32,10 @@ namespace Parosan.Service
             AesCryptoServiceProvider acsp = new AesCryptoServiceProvider();
           
 
-            try
-            {
-                acsp.Key = Encoding.ASCII.GetBytes(key);// set key
-
-            }
-            catch
-            {
-                return Encoding.ASCII.GetBytes("Invalid Key Size !");
-            }
-
-            try
-            {
-                acsp.IV = Encoding.ASCII.GetBytes(iv); // set iv
-            }
-            catch
-            {
-                return Encoding.ASCII.GetBytes("Invalid IV Size !");
-            }
-
+           
+            acsp.Key = Encoding.ASCII.GetBytes(key);// set key      
+            acsp.IV = Encoding.ASCII.GetBytes(iv); // set iv
+           
             acsp.Mode = CipherMode.CBC; // set cipher mode cbc
 
             //create encrytor
