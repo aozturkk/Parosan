@@ -35,7 +35,7 @@
 
         </Style>
 
-        <Style x:Key="passwordUserControlButton" TargetType="Button">
+        <Style x:Key="userControlButton" TargetType="Button">
 
             <Setter Property="Foreground" Value="#FF0F2E80"/>
             <Setter Property="FontSize" Value="15"/>

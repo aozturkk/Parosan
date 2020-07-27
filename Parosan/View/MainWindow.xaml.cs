@@ -39,25 +39,37 @@ namespace Parosan
             this.WindowState = WindowState.Minimized;
         }
 
-        private void passwordsTabClick(object sender, RoutedEventArgs e)
-        {
-            Password password = new Password();
-           // password.passwordView.Items.Clear();
-            MainController.callUserControl(mainContent, password);
-        }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             MainController.callUserControl(mainContent, new Password());
-           
+
         }
+
+        private void passwordsTabClick(object sender, RoutedEventArgs e)
+        {
+            Password password = new Password();
+      
+            MainController.callUserControl(mainContent, password);
+        }
+
+       
 
 
         private void paymentsTab_Click(object sender, RoutedEventArgs e)
         {
             Payment payment = new Payment();
-            // password.passwordView.Items.Clear();
+         
             MainController.callUserControl(mainContent, payment);
+        }
+
+       
+
+        private void personsTab_Click(object sender, RoutedEventArgs e)
+        {
+
+            Person person = new Person();
+            MainController.callUserControl(mainContent, person);
+
         }
 
         private void exitTab_Click(object sender, RoutedEventArgs e)

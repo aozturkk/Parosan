@@ -14,9 +14,9 @@
 
         <Border Background="White" Grid.Row="0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Style="{DynamicResource passwordUserControlButton}" Content="Add Payment" x:Name="addPayment" Click="addPayment_Click"></Button>
-                <Button Style="{DynamicResource passwordUserControlButton}" Content="Edit Payment" x:Name="editPayment" Click="editPayment_Click" ></Button>
-                <Button Style="{DynamicResource passwordUserControlButton}" Content="Delete" x:Name="deletePayment" Click="deletePayment_Click" ></Button>
+                <Button Style="{DynamicResource userControlButton}" Content="Add Payment" x:Name="addPayment" Click="addPayment_Click"></Button>
+                <Button Style="{DynamicResource userControlButton}" Content="Edit Payment" x:Name="editPayment" Click="editPayment_Click" ></Button>
+                <Button Style="{DynamicResource userControlButton}" Content="Delete" x:Name="deletePayment" Click="deletePayment_Click" ></Button>
              
             </StackPanel>
         </Border>

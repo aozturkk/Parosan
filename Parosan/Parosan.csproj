@@ -81,7 +81,9 @@
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Controller\PasswordController.cs" />
     <Compile Include="Controller\PaymentController.cs" />
+    <Compile Include="Controller\PersonController.cs" />
     <Compile Include="Controller\RegisterController.cs" />
+    <Compile Include="Model\PersonModel.cs" />
     <Compile Include="View\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -101,6 +103,12 @@
     </Compile>
     <Compile Include="View\Payment.xaml.cs">
       <DependentUpon>Payment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Person.xaml.cs">
+      <DependentUpon>Person.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PersonControl.xaml.cs">
+      <DependentUpon>PersonControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
@@ -134,6 +142,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Payment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Person.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PersonControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

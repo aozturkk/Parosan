@@ -1,11 +1,11 @@
-﻿<Window x:Class="Parosan.View.AddPayment"
+﻿<Window x:Class="Parosan.View.PersonControl"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parosan.View"
         mc:Ignorable="d"
-        Title="AddPayment" Height="400" Width="647" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+        Title="PersonControl" Height="400" Width="647" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="9*"/>
@@ -26,30 +26,30 @@
                 </Ellipse.Stroke>
             </Ellipse>
             <Image Source="../img/plus.png" Panel.ZIndex="3" Canvas.Left="64" Canvas.Top="26" Height="56" Width="56"/>
-            <Label Content="Add Payment" Foreground="White" Panel.ZIndex="4" Canvas.Left="151" Canvas.Top="50" FontSize="16"/>
+            <Label Content="" Foreground="White" Panel.ZIndex="4" Canvas.Left="151" Canvas.Top="50" FontSize="16" x:Name="controlType"/>
             <Border Height="330 " Width="485" Canvas.Left="83" Canvas.Top="48" Background="#FFE0E0E0" CornerRadius="0,0,50,50" >
                 <Border.Effect>
                     <DropShadowEffect Direction="250" Opacity="0.4"/>
                 </Border.Effect>
 
             </Border>
-            <Label Content="Title : " Canvas.Left="131" Canvas.Top="105"/>
-            <TextBox Height="25" Width="200" x:Name="title" Canvas.Left="260" Canvas.Top="105"/>
+            <Label Content="Name : " Canvas.Left="131" Canvas.Top="105"/>
+            <TextBox Height="25" Width="200" x:Name="name" Canvas.Left="260" Canvas.Top="105"/>
 
-            <Label Content="Card Number : " Canvas.Left="131" Canvas.Top="140"/>
-            <TextBox Height="25" Width="200" x:Name="card_number" Canvas.Left="260" Canvas.Top="140"/>
+            <Label Content="Surname : " Canvas.Left="131" Canvas.Top="140"/>
+            <TextBox Height="25" Width="200" x:Name="surname" Canvas.Left="260" Canvas.Top="140"/>
 
-            <Label Content="Expiry Date: : " Canvas.Left="131" Canvas.Top="175"/>
-            <TextBox Height="25" Width="200" x:Name="expiry_date" Canvas.Left="260" Canvas.Top="175"/>
+            <Label Content="Phone : " Canvas.Left="131" Canvas.Top="175"/>
+            <TextBox Height="25" Width="200" x:Name="phone" Canvas.Left="260" Canvas.Top="175"/>
 
-            <Label Content="CVC : " Canvas.Left="131" Canvas.Top="210"/>
-            <TextBox Height="25" Width="200" x:Name="cvc" Canvas.Left="260" Canvas.Top="210"/>
+            <Label Content="E-Mail : " Canvas.Left="131" Canvas.Top="210"/>
+            <TextBox Height="25" Width="200" x:Name="email" Canvas.Left="260" Canvas.Top="210"/>
 
-            <Label Content="PIN : " Canvas.Left="131" Canvas.Top="245"/>
-            <TextBox Height="25" Width="200" x:Name="pin" Canvas.Left="260" Canvas.Top="245"/>
+            <Label Content="Description : " Canvas.Left="131" Canvas.Top="245"/>
+            <TextBox Height="45" Width="200" x:Name="description" Canvas.Left="260" Canvas.Top="245"/>
 
-            <Button Style="{DynamicResource userControlButton}" Content="Save" x:Name="paymentAdd"  Height="25" Width="100" Canvas.Left="214" Canvas.Top="300" Margin="0" Click="paymentAdd_Click"/>
-            <Button Style="{DynamicResource userControlButton}" Content="Cancel" x:Name="cancelPaymentAdd"  Height="25" Width="100" Canvas.Left="360" Canvas.Top="300" Margin="0" Click="cancelPaymentAdd_Click"/>
+            <Button Style="{DynamicResource userControlButton}" Content="Save" x:Name="savePerson"  Height="25" Width="100" Canvas.Left="214" Canvas.Top="320" Margin="0" Click="savePerson_Click" />
+            <Button Style="{DynamicResource userControlButton}" Content="Cancel" x:Name="cancelSavePerson"  Height="25" Width="100" Canvas.Left="360" Canvas.Top="320" Margin="0" Click="cancelSavePerson_Click" />
 
 
         </Canvas>

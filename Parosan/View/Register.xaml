@@ -46,8 +46,8 @@
 
             <Label x:Name="resultLabel" Content=""  Canvas.Left="160" Canvas.Top="250" Foreground="Red"/>
 
-            <Button Style="{DynamicResource passwordUserControlButton}" Content="Register" x:Name="register"  Height="25" Width="100" Canvas.Left="100" Canvas.Top="291" Margin="0" Click="register_Click" />
-            <Button Style="{DynamicResource passwordUserControlButton}" Content="Cancel" x:Name="cancelRegister"  Height="25" Width="100" Canvas.Left="220" Canvas.Top="291" Margin="0" Click="cancelRegister_Click"/>
+            <Button Style="{DynamicResource userControlButton}" Content="Register" x:Name="register"  Height="25" Width="100" Canvas.Left="100" Canvas.Top="291" Margin="0" Click="register_Click" />
+            <Button Style="{DynamicResource userControlButton}" Content="Cancel" x:Name="cancelRegister"  Height="25" Width="100" Canvas.Left="220" Canvas.Top="291" Margin="0" Click="cancelRegister_Click"/>
 
 
         </Canvas>
