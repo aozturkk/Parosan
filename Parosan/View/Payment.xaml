@@ -22,7 +22,7 @@
         </Border>
 
         <Border Grid.Row="1">
-            <ListView x:Name="paymentView"  >
+            <ListView x:Name="paymentView" SelectionChanged="paymentView_SelectionChanged"  >
                 <ListView.View>
                     <GridView x:Name="paymentGridView" >
                         <GridViewColumn DisplayMemberBinding="{Binding title}" Header="Card Title" Width="170" ></GridViewColumn>

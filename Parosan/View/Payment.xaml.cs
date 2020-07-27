@@ -24,7 +24,7 @@ namespace Parosan.View
     public partial class Payment : UserControl
     {
         MainWindow mainWindow = (MainWindow)Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
-
+        private PaymentModel selectedPayment = new PaymentModel();
         public Payment()
         {
             InitializeComponent();
@@ -40,15 +40,9 @@ namespace Parosan.View
             paymentView.ItemsSource = passwordController.printPayment();
 
         }
-        private void deletePayment_Click(object sender, RoutedEventArgs e)
-        {
+       
 
-        }
-
-        private void editPayment_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+    
 
         private void addPayment_Click(object sender, RoutedEventArgs e)
         {
@@ -77,6 +71,57 @@ namespace Parosan.View
 
         
         }
-           
+
+        private void deletePayment_Click(object sender, RoutedEventArgs e)
+        {
+            PaymentController paymentController = new PaymentController();
+            paymentController.deletePayment(selectedPayment.id);
+            paymentView.ItemsSource = paymentController.printPayment();
+            ICollectionView view = CollectionViewSource.GetDefaultView(paymentView.ItemsSource);
+            view.Refresh();
+        }
+
+        private void editPayment_Click(object sender, RoutedEventArgs e)
+        {
+            AddPayment updatePayment = new AddPayment();
+
+            updatePayment.title.Text = selectedPayment.title;
+            updatePayment.card_number.Text = selectedPayment.card_number;
+            updatePayment.expiry_date.Text = selectedPayment.expiry_date;
+            updatePayment.cvc.Text = selectedPayment.cvc;
+            updatePayment.pin.Text = selectedPayment.pin;
+
+            updatePayment.Owner = mainWindow;
+            mainWindow.Opacity = 0.4;
+            updatePayment.ShowDialog();
+
+            if (updatePayment.title.Text != "" || updatePayment.card_number.Text != "" || updatePayment.expiry_date.Text != "" || updatePayment.cvc.Text != "")
+            {
+                PaymentModel updetedPayment = new PaymentModel();
+
+                updetedPayment.id = selectedPayment.id;
+                updetedPayment.title = updatePayment.title.Text;
+                updetedPayment.card_number = updatePayment.card_number.Text;
+                updetedPayment.expiry_date = updatePayment.expiry_date.Text;
+                updetedPayment.cvc = updatePayment.cvc.Text;
+                updetedPayment.pin = updatePayment.pin.Text;
+                updetedPayment.user_id = UserModel.id;
+
+                PaymentController paymentController = new PaymentController();
+                paymentController.updatePayment(updetedPayment);
+
+                paymentView.ItemsSource = paymentController.printPayment();
+                ICollectionView view = CollectionViewSource.GetDefaultView(paymentView.ItemsSource);
+                view.Refresh();
+            }
+        }
+        private void paymentView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = (PaymentModel)paymentView.SelectedItem;
+            if (item != null)
+            {
+                selectedPayment = item;
+            }
+        }
     }
 }

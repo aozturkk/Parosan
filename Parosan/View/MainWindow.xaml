@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parosan"
         mc:Ignorable="d"
-        Title="Parosan" Height="603" Width="970" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" ResizeMode="NoResize" Loaded="Window_Loaded" Icon="img/logo.png">
+        Title="Parosan" Height="603" Width="970" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" ResizeMode="NoResize" Loaded="Window_Loaded" Icon="../img/logo.png">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -24,17 +24,17 @@
         <!-- Top Menu !-->
 
         <Border Grid.Column="0" Grid.Row="0" >
-            <Image Source="img/menu_background.jpg" Stretch="Fill" ></Image>
+            <Image Source="../img/menu_background.jpg" Stretch="Fill" ></Image>
         </Border>
         <Border Grid.Column="1" Grid.Row="0" >
-            <Image Source="img/menu_background.jpg" Stretch="Fill" ></Image>
+            <Image Source="../img/menu_background.jpg" Stretch="Fill" ></Image>
         </Border>
 
            <!--Title and Icon-->
         <Border Grid.Column="0" Grid.Row="0">
 
             <DockPanel Width="80" HorizontalAlignment="Left">
-                <Image Source="img/icon.png"/>
+                <Image Source="../img/icon.png"/>
                 <Label Content="Parosan" Foreground="White"/>
             </DockPanel>
         </Border>
@@ -53,12 +53,12 @@
         <!-- Left Menu !-->
 
         <Border Grid.Column="0" Grid.Row="1">
-            <Image Source="img/menu_background.jpg" Stretch="Fill" ></Image>
+            <Image Source="../img/menu_background.jpg" Stretch="Fill" ></Image>
         </Border>
 
         <Border  Grid.Column="0" Grid.Row="1"  Margin="0,20,0,0">
             <StackPanel  HorizontalAlignment="Center">
-                <Image HorizontalAlignment="Center" Height="93" VerticalAlignment="Top" Width="90" Source="img/user.png"></Image>
+                <Image HorizontalAlignment="Center" Height="93" VerticalAlignment="Top" Width="90" Source="../img/user.png"></Image>
                 <Label x:Name="username" Content="" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" Foreground="#FF272222" FontWeight="Bold" Margin="0,15,0,0"></Label>
             </StackPanel>
 
@@ -69,7 +69,7 @@
 
                 <Button Height="50" Style="{DynamicResource menu}" x:Name="passwordsTab" Click="passwordsTabClick">
                     <DockPanel Width="200">
-                        <Image Source="img/passwords.png" Height="40" Width="50"></Image>
+                        <Image Source="../img/passwords.png" Height="40" Width="50"></Image>
                         <Label Content="Passwords" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
                     </DockPanel>
                 </Button>
@@ -78,33 +78,33 @@
 
                 <Button Height="50" Style="{DynamicResource menu}" x:Name="paymentsTab" Click="paymentsTab_Click">
                     <DockPanel Width="200"  >
-                        <Image Source="img/payments.png" Width="50" Height="40"></Image>
+                        <Image Source="../img/payments.png" Width="50" Height="40"></Image>
                         <Label Content="Payments" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
                     </DockPanel>
                 </Button>
                 <Button Height="50" Style="{DynamicResource menu}" >
                     <DockPanel Width="200">
-                        <Image Source="img/persons.png" Width="50" Height="40"></Image>
+                        <Image Source="../img/persons.png" Width="50" Height="40"></Image>
                         <Label Content="Persons" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
                     </DockPanel>
                 </Button>
 
                 <Button Height="50" Style="{DynamicResource menu}" >
                     <DockPanel Width="200">
-                        <Image Source="img/documents.png" Width="50" Height="40"></Image>
+                        <Image Source="../img/documents.png" Width="50" Height="40"></Image>
                         <Label Content="Documents" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
                     </DockPanel>
                 </Button>
                 <Button Height="50" Style="{DynamicResource menu}" >
                     <DockPanel Width="200">
-                        <Image Source="img/notes.png" Width="50" Height="40"></Image>
+                        <Image Source="../img/notes.png" Width="50" Height="40"></Image>
                         <Label Content="Notes" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
                     </DockPanel>
                 </Button>
 
                 <Button Height="50" Style="{DynamicResource menu}" x:Name="exitTab" Click="exitTab_Click" >
                     <DockPanel Width="200">
-                        <Image Source="img/exit.png" Width="50" Height="30"></Image>
+                        <Image Source="../img/exit.png" Width="50" Height="30"></Image>
                         <Label Content="Exit" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>
                     </DockPanel>
                 </Button>

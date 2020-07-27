@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parosan"
         mc:Ignorable="d"
-        Title="LoginPage" Height="647" Width="400" WindowStyle="None" Icon="img/logo.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="LoginPage" Height="647" Width="400" WindowStyle="None" Icon="../img/logo.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
 
@@ -16,7 +16,7 @@
 
 
         <Border Grid.Row="0" >
-            <Image Source="img/menu_background.jpg" Stretch="Fill" ></Image>
+            <Image Source="../img/menu_background.jpg" Stretch="Fill" ></Image>
 
         </Border>
 
@@ -30,7 +30,7 @@
 
         <Canvas Grid.Row="0">
 
-            <Image  Height="100" Width="100" Canvas.Left="150" Canvas.Top="120" Source="img/logo.png"></Image>
+            <Image  Height="100" Width="100" Canvas.Left="150" Canvas.Top="120" Source="../img/logo.png"></Image>
 
             <!--Username Textbox and Placeholder -->
             <TextBox Height="25" Width="200" x:Name="usernameTextBox" Canvas.Left="100" Canvas.Top="250" Background="#FFC7D1FF" FontSize="14" FontFamily="Oswald" Foreground="#FF232121"/>

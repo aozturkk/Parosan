@@ -82,6 +82,34 @@ namespace Parosan.Controller
             dbConnection.Close();
         }
 
+        public void deletePayment(int id)
+        {
+            connectionDB();
 
+            SQLiteCommand sqlCommand = new SQLiteCommand(dbConnection);
+            sqlCommand.CommandText = "DELETE FROM payment WHERE id=" + id + " AND user_id=" + UserModel.id;
+            sqlCommand.ExecuteScalar();
+            dbConnection.Close();
+        }
+
+        public void updatePayment(PaymentModel updatedPayment)
+        {
+            CryptoService cryptoService = new CryptoService();
+
+            connectionDB();
+
+            SQLiteCommand sqlCommand = new SQLiteCommand(dbConnection);
+
+            sqlCommand.CommandText = "update payment set title=@title,card_number=@card_number,expiry_date=@expiry_date,cvc=@cvc,pin=@pin where id = '" + updatedPayment.id + "'" + " AND user_id='" + UserModel.id + "'";
+
+            sqlCommand.Parameters.AddWithValue("@title", cryptoService.textEncrytion(updatedPayment.title));
+            sqlCommand.Parameters.AddWithValue("@card_number", cryptoService.textEncrytion(updatedPayment.card_number));
+            sqlCommand.Parameters.AddWithValue("@expiry_date", cryptoService.textEncrytion(updatedPayment.expiry_date));
+            sqlCommand.Parameters.AddWithValue("@cvc", cryptoService.textEncrytion(updatedPayment.cvc));
+            sqlCommand.Parameters.AddWithValue("@pin", cryptoService.textEncrytion(updatedPayment.pin));
+            sqlCommand.ExecuteNonQuery();
+
+            dbConnection.Close();
+        }
     }
 }
