@@ -84,6 +84,12 @@
     <Compile Include="Controller\PersonController.cs" />
     <Compile Include="Controller\RegisterController.cs" />
     <Compile Include="Model\PersonModel.cs" />
+    <Compile Include="View\Document.xaml.cs">
+      <DependentUpon>Document.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DocumentControl.xaml.cs">
+      <DependentUpon>DocumentControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -113,6 +119,14 @@
     <Compile Include="View\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Document.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DocumentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -224,9 +238,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\plus.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\logo.png" />

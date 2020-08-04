@@ -89,7 +89,7 @@
                     </DockPanel>
                 </Button>
 
-                <Button Height="50" Style="{DynamicResource menu}" >
+                <Button Height="50" Style="{DynamicResource menu}" x:Name="documentsTab" Click="documentsTab_Click" >
                     <DockPanel Width="200">
                         <Image Source="../img/documents.png" Width="50" Height="40"></Image>
                         <Label Content="Documents" VerticalAlignment="Center" Foreground="#FF272222" FontSize="20" FontFamily="SimSun-ExtB" FontStyle="Italic" ></Label>

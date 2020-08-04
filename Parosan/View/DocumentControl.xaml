@@ -1,0 +1,51 @@
+﻿<Window x:Class="Parosan.View.DocumentControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Parosan.View"
+        mc:Ignorable="d"
+        Title="DocumentControl" Height="400" Width="647" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Canvas Grid.RowSpan="2">
+
+
+            <Rectangle Height="34" Width="450" Canvas.Left="83" Canvas.Top="48" Fill="#FF3E67D6" Panel.ZIndex="1"/>
+            <Ellipse Height="90" Width="90" Canvas.Left="46" Fill="#FFF5F4F4" Panel.ZIndex="2" StrokeThickness="4" Canvas.Top="10">
+                <Ellipse.Stroke>
+                    <RadialGradientBrush Center="0.5,1">
+                        <GradientStop Color="#FFC4CFEA" Offset="0.911"/>
+                        <GradientStop Color="#FF1D53E4" Offset="0.025"/>
+                        <GradientStop Color="#FF204DC9" Offset="0.655"/>
+                        <GradientStop Color="#FFCCDEF0" Offset="0.323"/>
+                    </RadialGradientBrush>
+                </Ellipse.Stroke>
+            </Ellipse>
+            <Image Source="../img/plus.png" Panel.ZIndex="3" Canvas.Left="64" Canvas.Top="26" Height="56" Width="56"/>
+            <Label Content="" x:Name="controlType" Foreground="White" Panel.ZIndex="4" Canvas.Left="151" Canvas.Top="50" FontSize="16" />
+            <Border Height="300 " Width="450" Canvas.Left="83" Canvas.Top="48" Background="#FFE0E0E0" CornerRadius="0,0,50,50" >
+                <Border.Effect>
+                    <DropShadowEffect Direction="250" Opacity="0.4"/>
+                </Border.Effect>
+
+            </Border>
+            <Label Content="Document Name : " Canvas.Left="131" Canvas.Top="150"/>
+            <TextBox Height="25" Width="200" x:Name="title" Canvas.Left="260" Canvas.Top="150"/>
+
+            <Label Content="Select Document : " Canvas.Left="131" Canvas.Top="190"/>
+            <Button Style="{DynamicResource userControlButton}" Content="Select" x:Name="documentSelect"  Height="25" Width="100" Canvas.Left="260" Canvas.Top="190" Margin="0" Click="documentSelect_Click" />
+            <Label Content="... " Canvas.Left="360" Canvas.Top="190" x:Name="documentNameRaw"/>
+
+
+            <Button Style="{DynamicResource userControlButton}" Content="Save" x:Name="documentAdd"  Height="25" Width="100" Canvas.Left="200" Canvas.Top="290" Margin="0" />
+            <Button Style="{DynamicResource userControlButton}" Content="Cancel" x:Name="cancelDocumentAdd"  Height="25" Width="100" Canvas.Left="340" Canvas.Top="290" Margin="0" />
+
+
+        </Canvas>
+    </Grid>
+</Window>

@@ -72,9 +72,17 @@ namespace Parosan
 
         }
 
+        private void documentsTab_Click(object sender, RoutedEventArgs e)
+        {
+            Document document = new Document();
+            MainController.callUserControl(mainContent,document);
+        }
+
         private void exitTab_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
         }
+
+        
     }
 }
