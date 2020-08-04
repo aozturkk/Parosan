@@ -92,11 +92,11 @@
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Service\CryptoService.cs" />
     <Compile Include="Service\HasingService.cs" />
-    <Compile Include="View\AddPassword.xaml.cs">
-      <DependentUpon>AddPassword.xaml</DependentUpon>
+    <Compile Include="View\PasswordControl.xaml.cs">
+      <DependentUpon>PasswordControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AddPayment.xaml.cs">
-      <DependentUpon>AddPayment.xaml</DependentUpon>
+    <Compile Include="View\PaymentControl.xaml.cs">
+      <DependentUpon>PaymentControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Password.xaml.cs">
       <DependentUpon>Password.xaml</DependentUpon>
@@ -129,11 +129,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\AddPassword.xaml">
+    <Page Include="View\PasswordControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AddPayment.xaml">
+    <Page Include="View\PaymentControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

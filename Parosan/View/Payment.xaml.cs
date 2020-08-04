@@ -46,11 +46,12 @@ namespace Parosan.View
 
         private void addPayment_Click(object sender, RoutedEventArgs e)
         {
-            AddPayment addPayment = new AddPayment();
+            PaymentControl addPayment = new PaymentControl();
             PaymentController paymentController = new PaymentController();
            
             addPayment.Owner = mainWindow;
             mainWindow.Opacity = 0.4;
+            addPayment.controlType.Content = "Add Payment";
             addPayment.ShowDialog();
 
             if(addPayment.title.Text!=""|| addPayment.card_number.Text!=""|| addPayment.expiry_date.Text!="" || addPayment.cvc.Text != "")
@@ -83,7 +84,7 @@ namespace Parosan.View
 
         private void editPayment_Click(object sender, RoutedEventArgs e)
         {
-            AddPayment updatePayment = new AddPayment();
+            PaymentControl updatePayment = new PaymentControl();
 
             updatePayment.title.Text = selectedPayment.title;
             updatePayment.card_number.Text = selectedPayment.card_number;
@@ -93,6 +94,7 @@ namespace Parosan.View
 
             updatePayment.Owner = mainWindow;
             mainWindow.Opacity = 0.4;
+            updatePayment.controlType.Content = "Edit Payment";
             updatePayment.ShowDialog();
 
             if (updatePayment.title.Text != "" || updatePayment.card_number.Text != "" || updatePayment.expiry_date.Text != "" || updatePayment.cvc.Text != "")
@@ -115,6 +117,8 @@ namespace Parosan.View
                 view.Refresh();
             }
         }
+
+        // Selcet item for editing 
         private void paymentView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var item = (PaymentModel)paymentView.SelectedItem;

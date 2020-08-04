@@ -11,36 +11,48 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Parosan.Controller;
+using Parosan.Model;
 
 namespace Parosan.View
 {
     /// <summary>
-    /// AddPayment.xaml etkileşim mantığı
+    /// AddPassword.xaml etkileşim mantığı
     /// </summary>
-    public partial class AddPayment : Window
+    public partial class PasswordControl : Window
     {
-        public AddPayment()
+        public PasswordControl()
         {
             InitializeComponent();
         }
 
-        private void paymentAdd_Click(object sender, RoutedEventArgs e)
+        private void cancelPasswordAdd_Click(object sender, RoutedEventArgs e)
         {
+            account_name.Text = "";
+            username.Text = "";
+            password.Text = "";
+            address.Text = "";
             this.Close();
             MainWindow mainWindow = (MainWindow)Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
             mainWindow.Opacity = 1;
+
         }
 
-        private void cancelPaymentAdd_Click(object sender, RoutedEventArgs e)
+        private void passwordAdd_Click(object sender, RoutedEventArgs e)
         {
-            title.Text = "";
-            card_number.Text = "";
-            expiry_date.Text = "";
-            cvc.Text = "";
-            pin.Text = "";
+           
+           
             this.Close();
             MainWindow mainWindow = (MainWindow)Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
             mainWindow.Opacity = 1;
+
+           
+
+        }
+
+        private void PasswordsTab_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

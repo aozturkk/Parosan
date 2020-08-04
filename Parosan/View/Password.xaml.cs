@@ -49,11 +49,12 @@ namespace Parosan.View
         }
         private void addPassword_Click(object sender, RoutedEventArgs e)
         {
-            AddPassword addPassword = new AddPassword();
+            PasswordControl addPassword = new PasswordControl();
             PasswordController passwordController = new PasswordController();
 
             addPassword.Owner = mainWindow;
             mainWindow.Opacity = 0.4;
+            addPassword.controlType.Content = "Add Password";
             addPassword.ShowDialog();
 
 
@@ -102,7 +103,7 @@ namespace Parosan.View
 
         private void editPassword_Click(object sender, RoutedEventArgs e)
         {
-            AddPassword updatePassword = new AddPassword();
+            PasswordControl updatePassword = new PasswordControl();
 
             updatePassword.account_name.Text = selectedPassword.account_name;
             updatePassword.username.Text = selectedPassword.username;
@@ -111,6 +112,7 @@ namespace Parosan.View
 
             updatePassword.Owner = mainWindow;
             mainWindow.Opacity = 0.4;
+            updatePassword.controlType.Content = "Edit Password";
             updatePassword.ShowDialog();
 
             if (updatePassword.account_name.Text != "" || updatePassword.username.Text != "" || updatePassword.password.Text != "")
