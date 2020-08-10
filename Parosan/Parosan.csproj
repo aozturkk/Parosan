@@ -77,19 +77,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controller\DatabaseController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MainController.cs" />
+    <Compile Include="Controller\NoteController.cs" />
     <Compile Include="Controller\PasswordController.cs" />
     <Compile Include="Controller\PaymentController.cs" />
     <Compile Include="Controller\PersonController.cs" />
     <Compile Include="Controller\RegisterController.cs" />
+    <Compile Include="Model\NoteModel.cs" />
     <Compile Include="Model\PersonModel.cs" />
-    <Compile Include="View\Document.xaml.cs">
-      <DependentUpon>Document.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\DocumentControl.xaml.cs">
-      <DependentUpon>DocumentControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -98,6 +95,12 @@
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Service\CryptoService.cs" />
     <Compile Include="Service\HasingService.cs" />
+    <Compile Include="View\Note.xaml.cs">
+      <DependentUpon>Note.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NoteControl.xaml.cs">
+      <DependentUpon>NoteControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PasswordControl.xaml.cs">
       <DependentUpon>PasswordControl.xaml</DependentUpon>
     </Compile>
@@ -119,14 +122,6 @@
     <Compile Include="View\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\Document.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\DocumentControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -143,6 +138,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Note.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NoteControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PasswordControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

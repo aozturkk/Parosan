@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="Parosan.View.Note"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Parosan.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+        <Border Background="White" Grid.Row="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Style="{DynamicResource userControlButton}" Content="New Note" x:Name="newNote" Click="newNote_Click" ></Button>
+                <Button Style="{DynamicResource userControlButton}" Content="Edit Note" x:Name="editNote" Click="editNote_Click"  ></Button>
+                <Button Style="{DynamicResource userControlButton}" Content="View" x:Name="viewNote" Click="viewNote_Click" ></Button>
+                <Button Style="{DynamicResource userControlButton}" Content="Delete" x:Name="deleteNote" Click="deleteNote_Click" ></Button>
+      
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="1">
+            <ListView x:Name="noteView" SelectionChanged="noteView_SelectionChanged"  >
+                <ListView.View>
+                    <GridView  >
+                        <GridViewColumn DisplayMemberBinding="{Binding title}" Header="Title" Width="150" ></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding content}" Header="Note" Width="400"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding date}" Header="Date" Width="150"></GridViewColumn>
+                     </GridView>
+                </ListView.View>
+            </ListView>
+        </Border>
+    </Grid>
+</UserControl>
