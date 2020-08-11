@@ -61,6 +61,23 @@ namespace Parosan.Controller
             db.connection().Close();
         }
 
+      
+        public void updateNote(NoteModel updatedNote)
+        {
+            CryptoService cryptoService = new CryptoService();
+
+            SQLiteCommand sqlCommand = new SQLiteCommand(db.connection());
+
+            sqlCommand.CommandText = "update note set title=@title,content=@content,date=@date where id = '" + updatedNote.id + "'" + " AND user_id='" + UserModel.id + "'";
+
+            sqlCommand.Parameters.AddWithValue("@title", cryptoService.textEncrytion(updatedNote.title));
+            sqlCommand.Parameters.AddWithValue("@content", cryptoService.textEncrytion(updatedNote.content));
+            sqlCommand.Parameters.AddWithValue("@date", cryptoService.textEncrytion(updatedNote.date));
+            
+            sqlCommand.ExecuteNonQuery();
+
+            db.connection().Close();
+        }
 
 
         public void deleteNote(int id)

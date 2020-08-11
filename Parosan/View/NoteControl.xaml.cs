@@ -21,6 +21,7 @@ namespace Parosan.View
     /// </summary>
     public partial class NoteControl : Window
     {
+        public int itemID;
         public NoteControl()
         {
             InitializeComponent();
@@ -54,6 +55,12 @@ namespace Parosan.View
                 newNote(noteModel);
             }
 
+            if (controlType.Content.ToString() == "Edit Note")
+            {
+                noteModel.id = itemID;
+                updateNote(noteModel);
+            }
+
             this.Close();
             MainWindow mainWindow = (MainWindow)Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
             mainWindow.Opacity = 1;
@@ -64,6 +71,13 @@ namespace Parosan.View
         {
             NoteController noteController = new NoteController();
             noteController.addNewNote(note);
+
+        }
+
+        private void updateNote(NoteModel note)
+        {
+            NoteController noteController = new NoteController();
+            noteController.updateNote(note);
 
         }
     }

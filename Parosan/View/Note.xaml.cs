@@ -64,7 +64,11 @@ namespace Parosan.View
             noteControl.Owner = mainWindow;
             mainWindow.Opacity = 0.4;
             noteControl.controlType.Content = "Edit Note";
+            noteControl.itemID = selectedNote.id;
+            noteControl.title.Text = selectedNote.title;
+            noteControl.content.AppendText(selectedNote.content);
             noteControl.ShowDialog();
+
             listNote();
         }
 
@@ -74,13 +78,18 @@ namespace Parosan.View
             noteControl.Owner = mainWindow;
             mainWindow.Opacity = 0.4;
             noteControl.controlType.Content = "View";
+            
+            //Disable save and close button and active close button
             noteControl.saveNote.Visibility = Visibility.Hidden;
             noteControl.cancelSaveNote.Visibility = Visibility.Hidden;
             noteControl.close.Visibility = Visibility.Visible;
+          
             noteControl.title.Text = selectedNote.title;
             noteControl.title.IsReadOnly = true;
+
             noteControl.content.AppendText(selectedNote.content);
             noteControl.content.IsReadOnly = true;
+
             noteControl.ShowDialog();
 
 
