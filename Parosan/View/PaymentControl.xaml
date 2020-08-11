@@ -48,8 +48,9 @@
             <Label Content="PIN : " Canvas.Left="131" Canvas.Top="245"/>
             <TextBox Height="25" Width="200" x:Name="pin" Canvas.Left="260" Canvas.Top="245"/>
 
-            <Button Style="{DynamicResource userControlButton}" Content="Save" x:Name="paymentAdd"  Height="25" Width="100" Canvas.Left="214" Canvas.Top="300" Margin="0" Click="paymentAdd_Click"/>
-            <Button Style="{DynamicResource userControlButton}" Content="Cancel" x:Name="cancelPaymentAdd"  Height="25" Width="100" Canvas.Left="360" Canvas.Top="300" Margin="0" Click="cancelPaymentAdd_Click"/>
+            <Button Style="{DynamicResource userControlButton}" Content="Save" x:Name="savePayment"  Height="25" Width="100" Canvas.Left="214" Canvas.Top="300" Margin="0" Click="savePayment_Click"/>
+            <Button Style="{DynamicResource userControlButton}" Content="Cancel" x:Name="cancelSavePayment"  Height="25" Width="100" Canvas.Left="360" Canvas.Top="300" Margin="0" Click="cancelSavePayment_Click"/>
+            <Button Style="{DynamicResource userControlButton}" Content="Close" x:Name="close"  Height="25" Width="100" Canvas.Left="300" Canvas.Top="300" Margin="0" Click="close_Click" Visibility="Hidden"/>
 
 
         </Canvas>

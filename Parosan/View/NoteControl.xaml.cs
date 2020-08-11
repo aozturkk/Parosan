@@ -22,6 +22,8 @@ namespace Parosan.View
     public partial class NoteControl : Window
     {
         public int itemID;
+        private NoteController noteController = new NoteController();
+
         public NoteControl()
         {
             InitializeComponent();
@@ -52,13 +54,14 @@ namespace Parosan.View
             
             if(controlType.Content.ToString() =="New Note")
             {
-                newNote(noteModel);
+                noteController.addNewNote(noteModel);
             }
 
             if (controlType.Content.ToString() == "Edit Note")
             {
                 noteModel.id = itemID;
-                updateNote(noteModel);
+                noteController.updateNote(noteModel);
+
             }
 
             this.Close();
@@ -67,18 +70,5 @@ namespace Parosan.View
 
         }
 
-        private void newNote(NoteModel note)
-        {
-            NoteController noteController = new NoteController();
-            noteController.addNewNote(note);
-
-        }
-
-        private void updateNote(NoteModel note)
-        {
-            NoteController noteController = new NoteController();
-            noteController.updateNote(note);
-
-        }
     }
 }

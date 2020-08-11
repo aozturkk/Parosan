@@ -36,50 +36,34 @@ namespace Parosan.View
         }
         public void listPayment()
         {
-            PaymentController passwordController = new PaymentController();
-            paymentView.ItemsSource = passwordController.printPayment();
+            PaymentController paymentController = new PaymentController();
+            paymentView.ItemsSource = paymentController.printPayment();
+            ICollectionView view = CollectionViewSource.GetDefaultView(paymentView.ItemsSource);
+            view.Refresh();
 
         }
        
 
-    
-
-        private void addPayment_Click(object sender, RoutedEventArgs e)
+        private void newPayment_Click(object sender, RoutedEventArgs e)
         {
             PaymentControl addPayment = new PaymentControl();
             PaymentController paymentController = new PaymentController();
            
             addPayment.Owner = mainWindow;
             mainWindow.Opacity = 0.4;
-            addPayment.controlType.Content = "Add Payment";
+            addPayment.controlType.Content = "New Payment";
             addPayment.ShowDialog();
 
-            if(addPayment.title.Text!=""|| addPayment.card_number.Text!=""|| addPayment.expiry_date.Text!="" || addPayment.cvc.Text != "")
-            {
-                PaymentModel newPayment = new PaymentModel();
-                newPayment.title = addPayment.title.Text;
-                newPayment.card_number = addPayment.card_number.Text;
-                newPayment.expiry_date = addPayment.expiry_date.Text;
-                newPayment.cvc = addPayment.cvc.Text;
-                newPayment.pin = addPayment.pin.Text;
+            listPayment();
 
-                paymentController.addPayment(newPayment);
 
-                paymentView.ItemsSource = paymentController.printPayment();
-                ICollectionView view = CollectionViewSource.GetDefaultView(paymentView.ItemsSource);
-                view.Refresh();
-            }
-
-        
         }
 
         private void deletePayment_Click(object sender, RoutedEventArgs e)
         {
             PaymentController paymentController = new PaymentController();
             paymentController.deletePayment(selectedPayment.id);
-            paymentView.ItemsSource = paymentController.printPayment();
-            ICollectionView view = CollectionViewSource.GetDefaultView(paymentView.ItemsSource);
-            view.Refresh();
+            listPayment();
         }
 
         private void editPayment_Click(object sender, RoutedEventArgs e)
@@ -95,29 +79,42 @@ namespace Parosan.View
             updatePayment.Owner = mainWindow;
             mainWindow.Opacity = 0.4;
             updatePayment.controlType.Content = "Edit Payment";
+            updatePayment.itemID = selectedPayment.id;
+
             updatePayment.ShowDialog();
 
-            if (updatePayment.title.Text != "" || updatePayment.card_number.Text != "" || updatePayment.expiry_date.Text != "" || updatePayment.cvc.Text != "")
-            {
-                PaymentModel updetedPayment = new PaymentModel();
-
-                updetedPayment.id = selectedPayment.id;
-                updetedPayment.title = updatePayment.title.Text;
-                updetedPayment.card_number = updatePayment.card_number.Text;
-                updetedPayment.expiry_date = updatePayment.expiry_date.Text;
-                updetedPayment.cvc = updatePayment.cvc.Text;
-                updetedPayment.pin = updatePayment.pin.Text;
-                updetedPayment.user_id = UserModel.id;
-
-                PaymentController paymentController = new PaymentController();
-                paymentController.updatePayment(updetedPayment);
-
-                paymentView.ItemsSource = paymentController.printPayment();
-                ICollectionView view = CollectionViewSource.GetDefaultView(paymentView.ItemsSource);
-                view.Refresh();
-            }
+            listPayment();
         }
+        private void viewPayment_Click(object sender, RoutedEventArgs e)
+        {
+            PaymentControl viewPayment = new PaymentControl();
 
+            viewPayment.Owner = mainWindow;
+            mainWindow.Opacity = 0.4;
+            viewPayment.controlType.Content = "View";
+
+            viewPayment.savePayment.Visibility = Visibility.Hidden;
+            viewPayment.cancelSavePayment.Visibility = Visibility.Hidden;
+            viewPayment.close.Visibility = Visibility.Visible;
+
+            viewPayment.title.Text = selectedPayment.title;
+            viewPayment.title.IsReadOnly = true;
+
+            viewPayment.card_number.Text = selectedPayment.card_number;
+            viewPayment.card_number.IsReadOnly = true;
+
+            viewPayment.expiry_date.Text = selectedPayment.expiry_date;
+            viewPayment.expiry_date.IsReadOnly = true;
+
+            viewPayment.cvc.Text = selectedPayment.cvc;
+            viewPayment.cvc.IsReadOnly = true;
+
+            viewPayment.pin.Text = selectedPayment.pin;
+            viewPayment.pin.IsReadOnly = true;
+
+            viewPayment.ShowDialog();
+
+        }
         // Selcet item for editing 
         private void paymentView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

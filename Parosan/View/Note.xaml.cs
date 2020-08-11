@@ -74,23 +74,23 @@ namespace Parosan.View
 
         private void viewNote_Click(object sender, RoutedEventArgs e)
         {
-            NoteControl noteControl = new NoteControl();
-            noteControl.Owner = mainWindow;
+            NoteControl viewNote = new NoteControl();
+            viewNote.Owner = mainWindow;
             mainWindow.Opacity = 0.4;
-            noteControl.controlType.Content = "View";
-            
+            viewNote.controlType.Content = "View";
+
             //Disable save and close button and active close button
-            noteControl.saveNote.Visibility = Visibility.Hidden;
-            noteControl.cancelSaveNote.Visibility = Visibility.Hidden;
-            noteControl.close.Visibility = Visibility.Visible;
-          
-            noteControl.title.Text = selectedNote.title;
-            noteControl.title.IsReadOnly = true;
+            viewNote.saveNote.Visibility = Visibility.Hidden;
+            viewNote.cancelSaveNote.Visibility = Visibility.Hidden;
+            viewNote.close.Visibility = Visibility.Visible;
 
-            noteControl.content.AppendText(selectedNote.content);
-            noteControl.content.IsReadOnly = true;
+            viewNote.title.Text = selectedNote.title;
+            viewNote.title.IsReadOnly = true;
 
-            noteControl.ShowDialog();
+            viewNote.content.AppendText(selectedNote.content);
+            viewNote.content.IsReadOnly = true;
+
+            viewNote.ShowDialog();
 
 
         }
