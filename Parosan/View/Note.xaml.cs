@@ -31,7 +31,7 @@ namespace Parosan.View
         public void listNote()
         {
             NoteController noteController = new NoteController();
-            noteView.ItemsSource = noteController.listNote();
+            noteView.ItemsSource = noteController.printNote();
 
         }
 

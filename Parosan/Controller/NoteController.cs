@@ -14,7 +14,7 @@ namespace Parosan.Controller
 
         private static int lastID = 0;
         private DatabaseController db = new DatabaseController();
-        public List<NoteModel> listNote()
+        public List<NoteModel> printNote()
         {
             CryptoService cryptoService = new CryptoService();
             
@@ -44,7 +44,7 @@ namespace Parosan.Controller
             
         }
 
-        public void addNewNote(NoteModel note)
+        public void addNote(NoteModel note)
         {
 
             CryptoService cryptoService = new CryptoService();

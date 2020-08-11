@@ -12,8 +12,7 @@ namespace Parosan.Controller
  
     class RegisterController
     {
-        private string databasePath = @"Data Source=" + Environment.CurrentDirectory + "\\db\\parosan.db;Version=3;New=false;Compress=True;Read Only=False";
-        SQLiteConnection dbConnection;
+        private DatabaseController db = new DatabaseController();
         private static int lastID = 0;
         public bool registerUser(string username, string password)
         {
@@ -25,7 +24,7 @@ namespace Parosan.Controller
             {
 
             
-                SQLiteCommand sqlCommand = new SQLiteCommand(dbConnection);
+                SQLiteCommand sqlCommand = new SQLiteCommand(db.connection());
 
                 sqlCommand.CommandText = "insert into user (id, username,password) Values (@id,@username,@password)";
                 sqlCommand.Parameters.AddWithValue("id", lastID + 1 );
@@ -35,7 +34,7 @@ namespace Parosan.Controller
 
                 sqlCommand.ExecuteNonQuery();
 
-                dbConnection.Close();
+                db.connection().Close();
             
                 return true;
             }
@@ -52,10 +51,7 @@ namespace Parosan.Controller
         {
             
 
-            dbConnection = new SQLiteConnection(databasePath);
-            dbConnection.Open();
-
-            SQLiteCommand sqlCommand = new SQLiteCommand("select * from user ", dbConnection);
+            SQLiteCommand sqlCommand = new SQLiteCommand("select * from user ", db.connection());
             SQLiteDataReader reader = sqlCommand.ExecuteReader();
 
           
@@ -64,13 +60,13 @@ namespace Parosan.Controller
             {
                 if (username == reader.GetString(reader.GetOrdinal("username")) )
                 {
-                    dbConnection.Close();
+                    db.connection().Close();
                     return false;
                 }
                 lastID = reader.GetInt32(reader.GetOrdinal("id")); 
             }
 
-           
+            db.connection().Close();
             return true;
         }
     }

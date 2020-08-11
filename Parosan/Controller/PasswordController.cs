@@ -26,7 +26,6 @@ namespace Parosan.Controller
             CryptoService cryptoService = new CryptoService();
 
             SQLiteCommand sqlCommand = new SQLiteCommand("select * from password where user_id="+UserModel.id, db.connection());
-            SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(sqlCommand);
             SQLiteDataReader reader = sqlCommand.ExecuteReader();
 
             List<PasswordModel> passwords = new List<PasswordModel>();

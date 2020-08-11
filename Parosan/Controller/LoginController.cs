@@ -12,8 +12,7 @@ namespace Parosan.Controller
     public class LoginController
     {
 
-        private string databasePath = @"Data Source=" + Environment.CurrentDirectory + "\\db\\parosan.db;Version=3;New=false;Compress=True;Read Only=False";
-        SQLiteConnection dbConnection;
+        private DatabaseController db = new DatabaseController();
 
         public bool checkUser(string username,string password)
         {
@@ -22,10 +21,7 @@ namespace Parosan.Controller
             string usernameHash = hasingService.sha256Hash( username );
             string passwordHash = hasingService.sha256Hash( password );
 
-
-            dbConnection = new SQLiteConnection(databasePath);
-            dbConnection.Open();
-            SQLiteCommand sqlCommand = new SQLiteCommand("select * from user where username=@username and password = @password", dbConnection);
+            SQLiteCommand sqlCommand = new SQLiteCommand("select * from user where username=@username and password = @password", db.connection());
 
 
             sqlCommand.Parameters.AddWithValue("@username", usernameHash);
@@ -41,7 +37,7 @@ namespace Parosan.Controller
             }
 
             reader.Close();
-            dbConnection.Close();
+            db.connection().Close();
 
             if (count == 1)
             {

@@ -12,51 +12,38 @@ namespace Parosan.Controller
 {
     class PaymentController
     {
-        private string databasePath = @"Data Source=" + Environment.CurrentDirectory + "\\db\\parosan.db;Version=3;New=false;Compress=True;Read Only=False";
-        SQLiteConnection dbConnection;
+        private DatabaseController db = new DatabaseController();
         private static int lastID = 0;
 
-        public void connectionDB()
-        {
-
-            dbConnection = new SQLiteConnection(databasePath);
-            dbConnection.Open();
-
-
-        }
-
+       
         public List<PaymentModel> printPayment()
         {
 
             CryptoService cryptoService = new CryptoService();
 
-            connectionDB();
-            SQLiteCommand sqlCommand = new SQLiteCommand("select * from payment where user_id=" + UserModel.id, dbConnection);
-            SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(sqlCommand);
-
-            DataTable dataTable = new DataTable();
-            dataAdapter.Fill(dataTable);
+            SQLiteCommand sqlCommand = new SQLiteCommand("select * from payment where user_id=" + UserModel.id, db.connection());
+            SQLiteDataReader reader = sqlCommand.ExecuteReader();
 
 
             List<PaymentModel> payment = new List<PaymentModel>();
 
-            for (int i = 0; i < dataTable.Rows.Count; i++)
+            while(reader.Read())
             {
                 PaymentModel temp = new PaymentModel();
-                temp.id = Convert.ToInt32(dataTable.Rows[i]["id"]);
-                temp.title = cryptoService.textDecrytion(dataTable.Rows[i]["title"].ToString());
-                temp.card_number = cryptoService.textDecrytion(dataTable.Rows[i]["card_number"].ToString());
-                temp.expiry_date = cryptoService.textDecrytion(dataTable.Rows[i]["expiry_date"].ToString());
-                temp.cvc = cryptoService.textDecrytion(dataTable.Rows[i]["cvc"].ToString());
-                temp.pin = cryptoService.textDecrytion(dataTable.Rows[i]["pin"].ToString());
-                temp.user_id = Convert.ToInt32(dataTable.Rows[i]["user_id"]);
+                temp.id = reader.GetInt32(reader.GetOrdinal("id"));
+                temp.title = cryptoService.textDecrytion( reader.GetString(reader.GetOrdinal("title") ) );
+                temp.card_number = cryptoService.textDecrytion(reader.GetString(reader.GetOrdinal("card_number")));
+                temp.expiry_date = cryptoService.textDecrytion(reader.GetString(reader.GetOrdinal("expiry_date")));
+                temp.cvc = cryptoService.textDecrytion(reader.GetString(reader.GetOrdinal("cvc")));
+                temp.pin = cryptoService.textDecrytion(reader.GetString(reader.GetOrdinal("pin")));
+                temp.user_id = reader.GetInt32(reader.GetOrdinal("user_id"));
 
                 payment.Add(temp);
-                lastID = Convert.ToInt32(dataTable.Rows[i]["id"]);
+                lastID = temp.id;
             }
 
 
-            dbConnection.Close();
+            db.connection().Close();
             return payment;
 
         }
@@ -66,8 +53,8 @@ namespace Parosan.Controller
 
             CryptoService cryptoService = new CryptoService();
 
-            connectionDB();
-            SQLiteCommand sqlCommand = new SQLiteCommand(dbConnection);
+            
+            SQLiteCommand sqlCommand = new SQLiteCommand(db.connection());
 
             sqlCommand.CommandText = "insert into payment (id,title,card_number,expiry_date,cvc,pin,user_id) Values (@id, @title,@card_number,@expiry_date,@cvc,@pin,@user_id)";
             sqlCommand.Parameters.AddWithValue("id", lastID + 1);
@@ -79,26 +66,24 @@ namespace Parosan.Controller
             sqlCommand.Parameters.AddWithValue("user_id", UserModel.id);
             sqlCommand.ExecuteNonQuery();
 
-            dbConnection.Close();
+            db.connection().Close();
         }
 
         public void deletePayment(int id)
         {
-            connectionDB();
-
-            SQLiteCommand sqlCommand = new SQLiteCommand(dbConnection);
+            
+            SQLiteCommand sqlCommand = new SQLiteCommand(db.connection());
             sqlCommand.CommandText = "DELETE FROM payment WHERE id=" + id + " AND user_id=" + UserModel.id;
             sqlCommand.ExecuteScalar();
-            dbConnection.Close();
+            db.connection().Close();
         }
 
         public void updatePayment(PaymentModel updatedPayment)
         {
             CryptoService cryptoService = new CryptoService();
 
-            connectionDB();
 
-            SQLiteCommand sqlCommand = new SQLiteCommand(dbConnection);
+            SQLiteCommand sqlCommand = new SQLiteCommand(db.connection());
 
             sqlCommand.CommandText = "update payment set title=@title,card_number=@card_number,expiry_date=@expiry_date,cvc=@cvc,pin=@pin where id = '" + updatedPayment.id + "'" + " AND user_id='" + UserModel.id + "'";
 
@@ -109,7 +94,7 @@ namespace Parosan.Controller
             sqlCommand.Parameters.AddWithValue("@pin", cryptoService.textEncrytion(updatedPayment.pin));
             sqlCommand.ExecuteNonQuery();
 
-            dbConnection.Close();
+            db.connection().Close();
         }
     }
 }

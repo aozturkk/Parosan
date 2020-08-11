@@ -54,7 +54,7 @@ namespace Parosan.View
             
             if(controlType.Content.ToString() =="New Note")
             {
-                noteController.addNewNote(noteModel);
+                noteController.addNote(noteModel);
             }
 
             if (controlType.Content.ToString() == "Edit Note")
