@@ -27,8 +27,8 @@ namespace Parosan.View
     public partial class Password : UserControl
     {
         MainWindow mainWindow = (MainWindow)Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
-        private PasswordModel selectedPassword = new PasswordModel(); 
-         
+        private PasswordModel selectedPassword = new PasswordModel();
+        private PasswordController passwordController = new PasswordController(); 
 
         public Password()
         {
@@ -42,42 +42,23 @@ namespace Parosan.View
         }
 
         public void listPassword()
-        {
-            PasswordController passwordController = new PasswordController();
+        {          
+           
             passwordView.ItemsSource = passwordController.printPassword();
+            ICollectionView view = CollectionViewSource.GetDefaultView(passwordView.ItemsSource);
+            view.Refresh();
 
         }
-        private void addPassword_Click(object sender, RoutedEventArgs e)
+        private void newPassword_Click(object sender, RoutedEventArgs e)
         {
-            PasswordControl addPassword = new PasswordControl();
-            PasswordController passwordController = new PasswordController();
+            PasswordControl newPassword = new PasswordControl();
 
-            addPassword.Owner = mainWindow;
+            newPassword.Owner = mainWindow;
             mainWindow.Opacity = 0.4;
-            addPassword.controlType.Content = "Add Password";
-            addPassword.ShowDialog();
+            newPassword.controlType.Content = "New Password";
+            newPassword.ShowDialog();
 
-
-            if(addPassword.account_name.Text!=""|| addPassword.username.Text!="" || addPassword.password.Text != "")
-            {
-                PasswordModel passwordModel = new PasswordModel();
-                passwordModel.account_name = addPassword.account_name.Text;
-                passwordModel.username = addPassword.username.Text;
-                passwordModel.password = addPassword.password.Text;
-                passwordModel.address = addPassword.address.Text;
-
-
-
-
-                passwordController.addPassword(passwordModel);
-
-
-                passwordView.ItemsSource = passwordController.printPassword();
-                ICollectionView view = CollectionViewSource.GetDefaultView(passwordView.ItemsSource);
-                view.Refresh();
-
-            }
-
+            listPassword();
         }
    
 
@@ -92,47 +73,60 @@ namespace Parosan.View
 
         private void deletePassword_Click(object sender, RoutedEventArgs e)
         {
-            PasswordController passwordController = new PasswordController();
-
+          
             passwordController.deletePassword(selectedPassword.id);
 
-            passwordView.ItemsSource = passwordController.printPassword();
-            ICollectionView view = CollectionViewSource.GetDefaultView(passwordView.ItemsSource);
-            view.Refresh();
+            listPassword();
         }
 
         private void editPassword_Click(object sender, RoutedEventArgs e)
         {
             PasswordControl updatePassword = new PasswordControl();
 
+            updatePassword.Owner = mainWindow;
+            mainWindow.Opacity = 0.4;
+            
+            updatePassword.controlType.Content = "Edit Password";
+            updatePassword.itemID = selectedPassword.id;
             updatePassword.account_name.Text = selectedPassword.account_name;
             updatePassword.username.Text = selectedPassword.username;
             updatePassword.password.Text = selectedPassword.password;
             updatePassword.address.Text = selectedPassword.address;
 
-            updatePassword.Owner = mainWindow;
-            mainWindow.Opacity = 0.4;
-            updatePassword.controlType.Content = "Edit Password";
             updatePassword.ShowDialog();
 
-            if (updatePassword.account_name.Text != "" || updatePassword.username.Text != "" || updatePassword.password.Text != "")
-            {
-                PasswordModel updetedPassword = new PasswordModel();
+            listPassword();
 
-                updetedPassword.id = selectedPassword.id;
-                updetedPassword.account_name = updatePassword.account_name.Text;
-                updetedPassword.username = updatePassword.username.Text;
-                updetedPassword.password = updatePassword.password.Text;
-                updetedPassword.address = updatePassword.address.Text;
-                updetedPassword.user_id = UserModel.id;
+        }
 
-                PasswordController passwordController = new PasswordController();
-                passwordController.updatePassword(updetedPassword);
+        private void viewPassword_Click(object sender, RoutedEventArgs e)
+        {
+            PasswordControl viewPassword = new PasswordControl();
+            viewPassword.Owner = mainWindow;
+            mainWindow.Opacity = 0.4;
 
-                passwordView.ItemsSource = passwordController.printPassword();
-                ICollectionView view = CollectionViewSource.GetDefaultView(passwordView.ItemsSource);
-                view.Refresh();
-            }
+            viewPassword.controlType.Content = "View";
+
+            viewPassword.savePassword.Visibility = Visibility.Hidden;
+            viewPassword.cancelSavePassword.Visibility = Visibility.Hidden;
+            viewPassword.close.Visibility = Visibility.Visible;
+
+            viewPassword.account_name.Text = selectedPassword.account_name;
+            viewPassword.account_name.IsReadOnly = true;
+
+            viewPassword.username.Text = selectedPassword.username;
+            viewPassword.username.IsReadOnly = true;
+
+            viewPassword.password.Text = selectedPassword.password;
+            viewPassword.password.IsReadOnly = true;
+
+            viewPassword.address.Text = selectedPassword.address;
+            viewPassword.address.IsReadOnly = true;
+
+
+            viewPassword.ShowDialog();
+
+
         }
     }
 }
