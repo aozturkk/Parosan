@@ -15,8 +15,9 @@
 
         <Border Background="White" Grid.Row="0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Style="{DynamicResource userControlButton}" Content="New Person" x:Name="addPerson" Click="addPerson_Click" ></Button>
+                <Button Style="{DynamicResource userControlButton}" Content="New Person" x:Name="newPerson" Click="newPerson_Click" ></Button>
                 <Button Style="{DynamicResource userControlButton}" Content="Edit Person" x:Name="editPerson" Click="editPerson_Click"  ></Button>
+                <Button Style="{DynamicResource userControlButton}" Content="View" x:Name="viewPerson" Click="viewPerson_Click"  ></Button>
                 <Button Style="{DynamicResource userControlButton}" Content="Delete" x:Name="deletePerson" Click="deletePerson_Click" ></Button>
             </StackPanel>
         </Border>

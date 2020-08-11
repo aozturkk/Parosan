@@ -22,6 +22,7 @@ namespace Parosan.View
     public partial class PasswordControl : Window
     {
         public int itemID;
+        private PasswordController passwordController = new PasswordController();
         public PasswordControl()
         {
             InitializeComponent();
@@ -46,13 +47,13 @@ namespace Parosan.View
 
             if(controlType.Content.ToString() == "New Password")
             {
-                newPassword(passwordModel);
+                passwordController.addPassword(passwordModel);
             }
 
             if (controlType.Content.ToString() == "Edit Password")
             {
                 passwordModel.id = itemID;
-                updatePassword(passwordModel);
+                passwordController.updatePassword(passwordModel);
             }
 
 
@@ -64,22 +65,6 @@ namespace Parosan.View
 
         }
 
-        private void PasswordsTab_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void newPassword(PasswordModel password)
-        {
-            PasswordController passwordController = new PasswordController();
-            passwordController.addPassword(password);
-        }
-
-        private void updatePassword(PasswordModel password)
-        {
-            PasswordController passwordController = new PasswordController();
-            passwordController.updatePassword(password);
-        }
 
         private void close_Click(object sender, RoutedEventArgs e)
         {

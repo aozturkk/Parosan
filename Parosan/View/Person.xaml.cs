@@ -35,70 +35,44 @@ namespace Parosan.View
         }
         private void listPerson()
         {
-            PersonController passwordController = new PersonController();
-            personView.ItemsSource = passwordController.printPerson();
+            PersonController personController = new PersonController();
+            personView.ItemsSource = personController.printPerson();
+            ICollectionView view = CollectionViewSource.GetDefaultView(personView.ItemsSource);
+            view.Refresh();
 
         }
-        private void addPerson_Click(object sender, RoutedEventArgs e)
+        private void newPerson_Click(object sender, RoutedEventArgs e)
         {
             PersonControl personControl = new PersonControl();
             PersonController personController = new PersonController();
 
             personControl.Owner = mainWindow;
             mainWindow.Opacity = 0.4;
+            personControl.controlType.Content = "New Person";
             personControl.ShowDialog();
 
-            if (personControl.name.Text != "" || personControl.surname.Text != "" )
-            {
-                PersonModel newPerson = new PersonModel();
-                newPerson.name = personControl.name.Text;
-                newPerson.surname = personControl.surname.Text;
-                newPerson.phone = personControl.phone.Text;
-                newPerson.email = personControl.email.Text;
-                newPerson.description = personControl.description.Text;
 
-                personController.addPerson(newPerson);
-
-                personView.ItemsSource = personController.printPerson();
-                ICollectionView view = CollectionViewSource.GetDefaultView(personView.ItemsSource);
-                view.Refresh();
-            }
+            listPerson();
         }
 
         private void editPerson_Click(object sender, RoutedEventArgs e)
         {
 
-            PersonControl personControl = new PersonControl();
+            PersonControl updatePerson = new PersonControl();
 
-            personControl.name.Text = selectedPerson.name;
-            personControl.surname.Text = selectedPerson.surname;
-            personControl.phone.Text = selectedPerson.phone;
-            personControl.email.Text = selectedPerson.email;
-            personControl.description.Text = selectedPerson.description;
+            updatePerson.name.Text = selectedPerson.name;
+            updatePerson.surname.Text = selectedPerson.surname;
+            updatePerson.phone.Text = selectedPerson.phone;
+            updatePerson.email.Text = selectedPerson.email;
+            updatePerson.description.Text = selectedPerson.description;
+            updatePerson.itemID = selectedPerson.id;
 
-            personControl.Owner = mainWindow;
+            updatePerson.Owner = mainWindow;
             mainWindow.Opacity = 0.4;
-            personControl.ShowDialog();
+            updatePerson.controlType.Content = "Edit Person";
+            updatePerson.ShowDialog();
 
-            if (personControl.name.Text != "" || personControl.surname.Text != "")
-            {
-                PersonModel updetedPerson = new PersonModel();
-
-                updetedPerson.id = selectedPerson.id;
-                updetedPerson.name = personControl.name.Text;
-                updetedPerson.surname = personControl.surname.Text;
-                updetedPerson.phone = personControl.phone.Text;
-                updetedPerson.email = personControl.email.Text;
-                updetedPerson.description = personControl.description.Text;
-                updetedPerson.user_id = UserModel.id;
-
-                PersonController personController = new PersonController();
-                personController.updatePerson(updetedPerson);
-                
-                personView.ItemsSource = personController.printPerson();
-                ICollectionView view = CollectionViewSource.GetDefaultView(personView.ItemsSource);
-                view.Refresh();
-            }
+            listPerson();
         }
 
         private void deletePerson_Click(object sender, RoutedEventArgs e)
@@ -106,9 +80,7 @@ namespace Parosan.View
             PersonController personController = new PersonController();
             personController.deletePerson(selectedPerson.id);
 
-            personView.ItemsSource = personController.printPerson();
-            ICollectionView view = CollectionViewSource.GetDefaultView(personView.ItemsSource);
-            view.Refresh();
+            listPerson();
 
 
         }
@@ -122,6 +94,35 @@ namespace Parosan.View
             }
         }
 
-       
+        private void viewPerson_Click(object sender, RoutedEventArgs e)
+        {
+            PersonControl viewPerson = new PersonControl();
+            viewPerson.Owner = mainWindow;
+            mainWindow.Opacity = 0.4;
+            viewPerson.controlType.Content = "View";
+
+            //Disable save and close button and active close button
+            viewPerson.savePerson.Visibility = Visibility.Hidden;
+            viewPerson.cancelSavePerson.Visibility = Visibility.Hidden;
+            viewPerson.close.Visibility = Visibility.Visible;
+
+            viewPerson.name.Text = selectedPerson.name;
+            viewPerson.name.IsReadOnly = true;
+
+            viewPerson.surname.Text = selectedPerson.surname;
+            viewPerson.surname.IsReadOnly = true;
+
+            viewPerson.phone.Text = selectedPerson.phone;
+            viewPerson.phone.IsReadOnly = true;
+
+            viewPerson.email.Text = selectedPerson.email;
+            viewPerson.email.IsReadOnly = true;
+
+            viewPerson.description.Text = selectedPerson.description;
+            viewPerson.description.IsReadOnly = true;
+            
+
+            viewPerson.ShowDialog();
+        }
     }
 }

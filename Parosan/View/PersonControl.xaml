@@ -50,6 +50,7 @@
 
             <Button Style="{DynamicResource userControlButton}" Content="Save" x:Name="savePerson"  Height="25" Width="100" Canvas.Left="214" Canvas.Top="320" Margin="0" Click="savePerson_Click" />
             <Button Style="{DynamicResource userControlButton}" Content="Cancel" x:Name="cancelSavePerson"  Height="25" Width="100" Canvas.Left="360" Canvas.Top="320" Margin="0" Click="cancelSavePerson_Click" />
+            <Button Style="{DynamicResource userControlButton}" Content="Close" x:Name="close"  Height="25" Width="100" Canvas.Left="300" Canvas.Top="320" Margin="0" Click="close_Click" Visibility="Hidden"/>
 
 
         </Canvas>
