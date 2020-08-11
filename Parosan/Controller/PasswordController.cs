@@ -14,51 +14,38 @@ namespace Parosan.Controller
 
     class PasswordController
     {
-        private string databasePath = @"Data Source=" + Environment.CurrentDirectory + "\\db\\parosan.db;Version=3;New=false;Compress=True;Read Only=False";
-        SQLiteConnection dbConnection;
+        private DatabaseController db = new DatabaseController();
         private static int lastID = 0;
 
 
-        public void connectionDB()
-        {
-
-            dbConnection = new SQLiteConnection(databasePath);
-            dbConnection.Open();
-
-
-        }
+     
 
         public List<PasswordModel> printPassword()
         {
             
             CryptoService cryptoService = new CryptoService();
 
-            connectionDB();
-            SQLiteCommand sqlCommand = new SQLiteCommand("select * from password where user_id="+UserModel.id, dbConnection);
+            SQLiteCommand sqlCommand = new SQLiteCommand("select * from password where user_id="+UserModel.id, db.connection());
             SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(sqlCommand);
-
-            
-
-            DataTable dataTable = new DataTable();
-            dataAdapter.Fill(dataTable);
-
+            SQLiteDataReader reader = sqlCommand.ExecuteReader();
 
             List<PasswordModel> passwords = new List<PasswordModel>();
 
-            for (int i = 0; i < dataTable.Rows.Count; i++)
+            while (reader.Read())
             {
                 PasswordModel temp = new PasswordModel();
-                temp.id = Convert.ToInt32(dataTable.Rows[i]["id"]);
-                temp.account_name = cryptoService.textDecrytion( dataTable.Rows[i]["account_name"].ToString() );
-                temp.username = cryptoService.textDecrytion( dataTable.Rows[i]["username"].ToString() );
-                temp.password = cryptoService.textDecrytion( dataTable.Rows[i]["password"].ToString() );
-                temp.user_id = Convert.ToInt32( dataTable.Rows[i]["user_id"] );
-                temp.address = cryptoService.textDecrytion(dataTable.Rows[i]["address"].ToString() );
+
+                temp.id = reader.GetInt32( reader.GetOrdinal("id") );
+                temp.account_name = cryptoService.textDecrytion( reader.GetString( reader.GetOrdinal("account_name") ) );
+                temp.username = cryptoService.textDecrytion( reader.GetString( reader.GetOrdinal("username") ) );
+                temp.password = cryptoService.textDecrytion( reader.GetString( reader.GetOrdinal("password") ) );
+                temp.address = cryptoService.textDecrytion( reader.GetString( reader.GetOrdinal("address") ) );
+                temp.user_id = reader.GetInt32( reader.GetOrdinal("user_id") );
                 passwords.Add(temp);
-                lastID = Convert.ToInt32(dataTable.Rows[i]["id"]);
+                lastID = temp.id;
             }
-           
-            dbConnection.Close();
+
+            db.connection().Close();
             return passwords;
 
         }
@@ -67,8 +54,7 @@ namespace Parosan.Controller
 
             CryptoService cryptoService = new CryptoService();
 
-            connectionDB();
-            SQLiteCommand sqlCommand = new SQLiteCommand(dbConnection);
+            SQLiteCommand sqlCommand = new SQLiteCommand(db.connection());
 
             sqlCommand.CommandText = "insert into password (id, account_name,username,password,address,user_id) Values (@id, @account_name,@username,@password,@address,@user_id)";          
             sqlCommand.Parameters.AddWithValue("id", lastID + 1 );
@@ -78,26 +64,23 @@ namespace Parosan.Controller
             sqlCommand.Parameters.AddWithValue("address", cryptoService.textEncrytion(newPassword.address));
             sqlCommand.Parameters.AddWithValue("user_id", UserModel.id);
             sqlCommand.ExecuteNonQuery();
-           
-            dbConnection.Close();
+
+            db.connection().Close();
         }
         public void deletePassword(int id)
         {
-            connectionDB();
 
-            SQLiteCommand sqlCommand = new SQLiteCommand(dbConnection);
+            SQLiteCommand sqlCommand = new SQLiteCommand(db.connection());
             sqlCommand.CommandText = "DELETE FROM password WHERE id=" + id + " AND user_id="+UserModel.id;
             sqlCommand.ExecuteScalar();
-            dbConnection.Close();
+            db.connection().Close();
         }
 
         public void updatePassword(PasswordModel updatedPassword)
         {
             CryptoService cryptoService = new CryptoService();
 
-            connectionDB();
-
-            SQLiteCommand sqlCommand = new SQLiteCommand(dbConnection);
+            SQLiteCommand sqlCommand = new SQLiteCommand(db.connection());
 
             sqlCommand.CommandText = "update password set account_name=@account_name,username=@username,password=@password,address=@address where id = '" + updatedPassword.id+"'" + " AND user_id='" + UserModel.id+"'"; 
       
@@ -108,7 +91,7 @@ namespace Parosan.Controller
  
             sqlCommand.ExecuteNonQuery();
 
-            dbConnection.Close();
+            db.connection().Close();
         }
 
     }
