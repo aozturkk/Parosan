@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Parosan.Controller;
 using Parosan.View;
+using System.IO;
 
 namespace Parosan
 {
@@ -24,8 +25,25 @@ namespace Parosan
         public LoginPage()
         {
             InitializeComponent();
+            databaseCheck();
         }
 
+        private void databaseCheck()
+        {
+            //Firstly check database folder if it not exist , create it
+            if (!Directory.Exists("db"))
+            {
+                Directory.CreateDirectory("db");
+            }
+
+            //Secondly check database file if it not exist , create it
+            if (!File.Exists("db/parosan.db"))
+            {
+                DatabaseController databaseController = new DatabaseController();
+                databaseController.createDatabase();
+            }
+            
+        }
         private void minimize(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
@@ -52,6 +70,7 @@ namespace Parosan
             else
             {
                 loginFaildLabel.Content = "Incorrect username or password !";
+
             }
         }
 
