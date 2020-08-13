@@ -46,6 +46,7 @@ namespace Parosan.View
                     username.Text = "";
                     password.Password = "";
                     passwordAgain.Password = "";
+                    
                    
 
                 }
@@ -65,6 +66,19 @@ namespace Parosan.View
         }
 
         private void cancelRegister_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void passwordAgain_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                register_Click(sender, e);
+            }
+        }
+
+        private void exitButtonHeader_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

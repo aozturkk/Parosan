@@ -49,10 +49,10 @@
             </TextBlock>
             
             <!--Password Textbox and Placeholder -->
-            <PasswordBox Height="25" Width="200" x:Name="passwordBox" Canvas.Left="100" Canvas.Top="290" Background="#FFC7D1FF" FontSize="14" Foreground="#FF232121" FontFamily="Oswald" PasswordChanged="passwordBox_PasswordChanged"/>
+            <PasswordBox Height="25" Width="200" x:Name="passwordBox" Canvas.Left="100" Canvas.Top="290" Background="#FFC7D1FF" FontSize="14" Foreground="#FF232121" FontFamily="Oswald" PasswordChanged="passwordBox_PasswordChanged" KeyDown="passwordBox_KeyDown" />
             
             
-            <TextBlock x:Name="passwordTextBlock" Canvas.Left="100" Canvas.Top="295" IsHitTestVisible="False" Text="Password" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
+            <TextBlock x:Name="passwordTextBlock" Canvas.Left="100" Canvas.Top="295" IsHitTestVisible="False" Text="Password" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray" >
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="Visibility" Value="Collapsed"/>

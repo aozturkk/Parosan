@@ -96,5 +96,13 @@ namespace Parosan
             }
                
         }
+
+        private void passwordBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                login_Click(sender, e);
+            }
+        }
     }
 }
