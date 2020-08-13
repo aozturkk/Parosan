@@ -43,9 +43,7 @@ namespace Parosan.Controller
             if (count == 1)
             {
                 UserModel.username = username;
-                UserModel.key = Convert.ToBase64String(cryptoService.generateKey(username + password, 32));
-                UserModel.iv = Convert.ToBase64String(cryptoService.generateKey(username + "parosan", 16));
-
+               
                 return true;
 
             }
