@@ -34,7 +34,9 @@ namespace Parosan.Service
           
 
            
-          
+            acsp.Key = Convert.FromBase64String(key);// set key      
+            acsp.IV = Convert.FromBase64String(iv); // set iv
+           
             acsp.Mode = CipherMode.CBC; // set cipher mode cbc
 
             //create encrytor
@@ -51,7 +53,9 @@ namespace Parosan.Service
         {
             AesCryptoServiceProvider acsp = new AesCryptoServiceProvider();
 
-          
+            acsp.Key = Convert.FromBase64String(key);// set key      
+            acsp.IV = Convert.FromBase64String(iv); // set iv
+
             acsp.Mode = CipherMode.CBC; // set cipher mode cbc
 
             //create decrytor
@@ -65,7 +69,13 @@ namespace Parosan.Service
 
         }
 
-     
+        public byte[] generateKey(string text, int size)
+        {
+            const int Iterations = 300;
+            var keyGenerator = new Rfc2898DeriveBytes(text, Salt, Iterations);
+            return keyGenerator.GetBytes(size);
+
+        }
 
 
 
