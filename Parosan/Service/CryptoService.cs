@@ -12,6 +12,7 @@ namespace Parosan.Service
         private string key = UserModel.key;
         private string iv = UserModel.iv;
 
+        private static readonly byte[] Salt = new byte[] { 13, 71, 37, 53, 61, 73, 23, 83 };
 
         public string textEncrytion(string clearText)
         {
@@ -33,8 +34,8 @@ namespace Parosan.Service
           
 
            
-            acsp.Key = Encoding.ASCII.GetBytes(key);// set key      
-            acsp.IV = Encoding.ASCII.GetBytes(iv); // set iv
+            acsp.Key = Convert.FromBase64String(key);// set key      
+            acsp.IV = Convert.FromBase64String(iv); // set iv
            
             acsp.Mode = CipherMode.CBC; // set cipher mode cbc
 
@@ -51,24 +52,9 @@ namespace Parosan.Service
         private byte[] aesDecrypt(byte[] cipherText)
         {
             AesCryptoServiceProvider acsp = new AesCryptoServiceProvider();
-            try
-            {
-                acsp.Key = Encoding.ASCII.GetBytes(key);// set key
 
-            }
-            catch
-            {
-                return Encoding.ASCII.GetBytes("Invalid Key Size !");
-            }
-
-            try
-            {
-                acsp.IV = Encoding.ASCII.GetBytes(iv); // set iv
-            }
-            catch
-            {
-                return Encoding.ASCII.GetBytes("Invalid IV Size !");
-            }
+            acsp.Key = Convert.FromBase64String(key);// set key      
+            acsp.IV = Convert.FromBase64String(iv); // set iv
 
             acsp.Mode = CipherMode.CBC; // set cipher mode cbc
 
@@ -80,6 +66,14 @@ namespace Parosan.Service
 
             return clearTextBytes;
 
+
+        }
+
+        public byte[] generateKey(string text , int size)
+        {
+            const int Iterations = 300;
+            var keyGenerator = new Rfc2898DeriveBytes(text, Salt, Iterations);
+            return keyGenerator.GetBytes(size);
 
         }
 

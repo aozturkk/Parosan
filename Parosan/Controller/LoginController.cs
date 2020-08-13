@@ -17,6 +17,7 @@ namespace Parosan.Controller
         public bool checkUser(string username,string password)
         {
             HasingService hasingService = new HasingService();
+            CryptoService cryptoService = new CryptoService();
 
             string usernameHash = hasingService.sha256Hash( username );
             string passwordHash = hasingService.sha256Hash( password );
@@ -42,8 +43,8 @@ namespace Parosan.Controller
             if (count == 1)
             {
                 UserModel.username = username;
-                UserModel.key = hasingService.md5hash(username + password );
-                UserModel.iv = (hasingService.md5hash(username + "parosan")).Substring(0, 16); 
+                UserModel.key = Convert.ToBase64String( cryptoService.generateKey( username + password , 32) );
+                UserModel.iv = Convert.ToBase64String(cryptoService.generateKey(username+"parosan", 16));
                 return true;
             }
             else
