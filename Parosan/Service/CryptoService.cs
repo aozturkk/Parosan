@@ -69,9 +69,15 @@ namespace Parosan.Service
 
         }
 
+        public byte[] generateKey(string text, int size)
+        {
+            const int Iterations = 300;
+            var keyGenerator = new Rfc2898DeriveBytes(text, Salt, Iterations);
+            return keyGenerator.GetBytes(size);
+
+        }
 
 
-       
 
     }
 }
